@@ -1,0 +1,40 @@
+package data;
+
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.ObjectCodec;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+
+public class UserDeserializer extends StdDeserializer<User>{
+
+	protected UserDeserializer(Class<?> vc) {
+		super(vc);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public User deserialize(JsonParser parser, DeserializationContext deserializer) throws IOException, JsonProcessingException {
+		User user = new User();
+        ObjectCodec codec = parser.getCodec();
+        JsonNode node = codec.readTree(parser);
+         
+        // try catch block
+        JsonNode idNode = node.get("id");
+        user.setId(idNode.asInt());
+        JsonNode emailNode = node.get("email");
+        user.setEmail(emailNode.asText());
+        JsonNode nameNode = node.get("name");
+        user.setId(idNode.asInt());
+        return user;
+	}
+	
+}

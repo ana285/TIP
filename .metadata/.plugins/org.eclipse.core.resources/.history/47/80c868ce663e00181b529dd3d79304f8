@@ -1,0 +1,71 @@
+package servlet;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import servicii.web.DBManager;
+import servlet.encryptation.*;
+
+/**
+ * Servlet implementation class AddUser
+ */
+
+@WebServlet("/AddUser")
+public class AddUser extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddUser() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Suuntem in SERVLET :)");
+		String name = request.getParameter("SName");
+		
+		String password = request.getParameter("SPassword");
+		if (!password.equals(null) && !password.equals("")){
+			String hashedpassword = Encrypt.generateHash(password);
+			password = hashedpassword;
+		}
+		else {
+			request.setAttribute("mesaj", "Pasword is compulsory!");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+		
+		String email = request.getParameter("SEmail");
+		String telephone = request.getParameter("STelephone");
+		String address1 = request.getParameter("SAddress");
+		String address2 = request.getParameter("SAddress2");
+		if (!name.equals(null) && !name.equals("") && !email.equals(null) && !email.equals("") 
+				&& !telephone.equals(null) && !telephone.equals("") && !address1.equals(null) && !address1.equals("")){
+			new DBManager().insertUser(name, password, email, telephone, address1, address2);
+			response.sendRedirect("login.jsp");
+		}else{
+			request.setAttribute("mesaj", "Fields are mandatory!");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	}
+
+}
