@@ -4,7 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="D:/TIP/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar"/>
-	<classpathentry kind="lib" path="D:/Restaurant/SSW/lib/mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="D:/ProiectTIP/TIP/SSW/lib/mysql-connector-java-5.1.46-bin.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.11-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.11-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.11-test-sources.jar"/>
