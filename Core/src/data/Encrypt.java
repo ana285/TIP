@@ -1,4 +1,4 @@
-package servlet.encryptation;
+package data;
 
 
 import java.nio.charset.StandardCharsets;

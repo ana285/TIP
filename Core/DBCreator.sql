@@ -4,7 +4,7 @@ USE TIP;
 CREATE TABLE User(
  	id int NOT NULL AUTO_INCREMENT, 
  	email VARCHAR(30) NOT NULL, 
- 	password VARCHAR(20) NOT NULL, 
+ 	password VARCHAR(100) NOT NULL, 
  	name VARCHAR(35) NOT NULL, 
  	telephone VARCHAR(35) NOT NULL,
  	address1 VARCHAR(70), 

@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import Manager.DBManager;
 import data.User;
 
 import javax.ws.rs.PUT;

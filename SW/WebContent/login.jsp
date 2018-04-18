@@ -67,7 +67,7 @@
 			<div class="left"></div>
 			<div class="right">
 				<div class="formBox">
-					<form id="LoginForm" action="" method="post"
+					<form id="LoginForm" action="LoginUser" method="post"
 						style="display: block;">
 						
 						<!-- LOGIN EMAIL -->
