@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" session="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,17 +41,26 @@
 					<li class="drodown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">My Account <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<%
+								if (session.getAttribute("email") == null) {
+							%>
 							<li><a href="register.jsp"><span
 									class="glyphicon glyphicon-user"></span> &nbsp; Sign Up </a></li>
 							<li><a href="login.jsp"><span
 									class="glyphicon glyphicon-log-in"></span> &nbsp; Log In</a></li>
+							<%
+								} else {
+							%>
 							<li><a href="#"><span
 									class="glyphicon glyphicon-shopping-cart"></span> &nbsp; My
 									cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
-							<li><a href="#"><span
+							<li><a href="logout.jsp"><span
 									class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out </a></li>
+							<%
+								}
+							%>
 						</ul></li>
 				</ul>
 			</div>
@@ -58,11 +69,13 @@
 
 
 	<div class="container text-center">
+		<%
+			if (session.getAttribute("email") != null) {
+		%>
 		<h2
 			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">THANK
 			YOU FOR BEING OUR CLIENT!</h2>
-		<br />
-		<br />
+		<br /> <br />
 
 
 		<h4
@@ -72,18 +85,21 @@
 
 
 		<div class="align1 alignLeft12">
+
 			<form>
 				<fieldset>
 
 					<label class="align1" for="VEmail">Email</label>
 					<div>
 						<input type="email" class="form-control" name="VEmail" id="VEmail"
+							value=<%out.println(session.getAttribute("email").toString());%>
 							readonly>
 					</div>
 
 					<br /> <label class="align1" for="VName">Name</label>
 					<div>
 						<input type="text" class="form-control" name="VName" id="VName"
+							value=<%out.println(session.getAttribute("name").toString());%>
 							readonly>
 					</div>
 
@@ -92,14 +108,22 @@
 						style="margin-left: 55%">Telephone</label>
 					<div>
 						<input style="margin-left: 55%" type="text" class="form-control"
-							name="VTelephone" id="VTelephone" readonly>
+							name="VTelephone" id="VTelephone"
+							value="<%System.out.println(session.getAttribute("telephone"));
+							if (session.getAttribute("telephone") != null){
+								out.println(session.getAttribute("telephone").toString());}%>"
+							readonly>
 					</div>
 
 				</fieldset>
 			</form>
+
+
+
 		</div>
 
 		<div class="align1 alignRight12">
+
 			<form>
 				<fieldset>
 
@@ -107,13 +131,20 @@
 					<label class="align1" for="VAddress">First Address</label>
 					<div>
 						<input type="text" class="form-control" name="VAddress"
-							id="VAddress" readonly>
+							id="VAddress"
+							value="<%if (session.getAttribute("address1") != null){
+								out.println(session.getAttribute("address1").toString());}%>"
+							readonly>
 					</div>
 
-					<br /> <label class="align1" for="VAddress2">Second Address</label>
+					<br /> <label class="align1" for="VAddress2">Second
+						Address</label>
 					<div>
 						<input type="text" class="form-control" name="VAddress2"
-							id="VAddress2" readonly>
+							id="VAddress2"
+							value="<%if (session.getAttribute("address2") != null){
+								out.println(session.getAttribute("address2").toString());}%>"
+							readonly>
 					</div>
 
 
@@ -121,7 +152,17 @@
 			</form>
 
 		</div>
-
+		<%
+			} else {
+		%>
+		<!-- ERROR MESSAGE -->
+		<span id="mesaj"> <%
+ 	out.println("You are not logged in!");
+ %>
+		</span>
+		<%
+			}
+		%>
 	</div>
 
 
@@ -130,19 +171,20 @@
 		<div class="row">
 
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<img src="images/Restaurant.jpg" class="img-responsive" alt="Restaurant">
+				<img src="images/Restaurant.jpg" class="img-responsive"
+					alt="Restaurant">
 			</div>
 
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 				<h4 style="text-transform: uppercase;">CONTACT</h4>
 				<p style="float: left">If you have a problem with the food, our
 					services,delivery guys, please contact us at the following
-					addresses and phone numbers:
-				</p>
-				<p> &#9674; Street Restaurant | 3407 Greystone Drive | Austin MX 78731 | (511) 311-9111</p>
-				<p> &#9674; (156) 121-7181</p>
-				<p> &#9674; (267) 128-7182</p>
-				
+					addresses and phone numbers:</p>
+				<p>&#9674; Street Restaurant | 3407 Greystone Drive | Austin MX
+					78731 | (511) 311-9111</p>
+				<p>&#9674; (156) 121-7181</p>
+				<p>&#9674; (267) 128-7182</p>
+
 
 			</div>
 
@@ -153,14 +195,13 @@
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 				<h4 style="text-transform: uppercase;">Visit Us</h4>
 				<p>Contact us on Facebook and Instagram !</p>
-				
-				<img src="images/FacebookLogo.png" class="img-responsive" alt="Facebook" width="150">
-				<a href="#">www.facebook.com/revenue5</a>
-				<br />
-				<br />
+
+				<img src="images/FacebookLogo.png" class="img-responsive"
+					alt="Facebook" width="150"> <a href="#">www.facebook.com/revenue5</a>
+				<br /> <br />
 				<p>
-					<img src="images/InstagramLogo.png" class="img-responsive" alt="Instagram" width="150">
-					<a href="#">www.instagram.com/revenue5</a>
+					<img src="images/InstagramLogo.png" class="img-responsive"
+						alt="Instagram" width="150"> <a href="#">www.instagram.com/revenue5</a>
 				</p>
 			</div>
 

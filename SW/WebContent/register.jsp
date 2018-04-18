@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" session="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <title>Revenue</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -40,19 +41,26 @@
 					<li class="drodown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">My Account <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<% 
+						
+						if(session.getAttribute("email") == null){
+						%>
 							<li><a href="register.jsp"><span
 									class="glyphicon glyphicon-user"></span> &nbsp; Sign Up </a></li>
 							<li><a href="login.jsp"><span
 									class="glyphicon glyphicon-log-in"></span> &nbsp; Log In</a></li>
+							<%}
+						else
+						{%>
 							<li><a href="#"><span
 									class="glyphicon glyphicon-shopping-cart"></span> &nbsp; My
 									cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
-							<li><a href="#"><span
+							<li><a href="logout.jsp"><span
 									class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out </a></li>
-						</ul>
-					</li>
+							<%} %>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -60,59 +68,57 @@
 
 	<div class="container text-center">
 		<h2
-			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">CREATE ACCOUNT</h2>
-		<br />
-		<br />
+			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">CREATE
+			ACCOUNT</h2>
+		<br /> <br />
 		<div class="container4">
 			<div class="left"></div>
 			<div class="right">
+			<% 
+			if(session.getAttribute("email") == null){
+						%>
 				<div class="formBoxRegister">
 					<form id="RegisterForm" action="AddUser" method="post"
 						style="display: block;">
 
 						<!-- SIGN UP EMAIL -->
-						<label for="SEmail">Email</label> 
-						<input type="email"
+						<label for="SEmail">Email</label> <input type="email"
 							name="SEmail" id="SEmail" tabindex="1" class="form-control"
 							placeholder="Fill in with your Email address" value="" required>
 
 
 						<!-- SIGN UP NAME -->
-						<label for="SName">Name</label> 
-						<input type="text" name="SName"
+						<label for="SName">Name</label> <input type="text" name="SName"
 							id="SName" tabindex="2" class="form-control"
 							placeholder="Fill in with your Name" value="" required>
 
 
 						<!-- SIGN UP PASSWORD -->
-						<label for="SPassword">Password</label> 
-						<input type="password"
+						<label for="SPassword">Password</label> <input type="password"
 							name="SPassword" id="SPassword" tabindex="3" class="form-control"
 							placeholder="Fill in with your Password" required>
 
 
 						<!-- SIGN UP TELEPHONE -->
-						<label for="STelephone">Telephone</label> 
-						<input type="text"
+						<label for="STelephone">Telephone</label> <input type="text"
 							name="STelephone" id="STelephone" tabindex="4"
 							class="form-control"
 							placeholder="Fill in with your Telephone number" required>
 
 
 						<!-- SIGN UP ADDRESS -->
-						<label for="SAddress">Address</label> 
-						<input type="text"
+						<label for="SAddress">Address</label> <input type="text"
 							name="SAddress" id="SAddress" tabindex="5" class="form-control"
-							placeholder="Fill in with your Address" required> 
-						
-						<label for="SAddress2">Another Address</label> 
-						<input type="text"
+							placeholder="Fill in with your Address" required> <label
+							for="SAddress2">Another Address</label> <input type="text"
 							name="SAddress2" id="SAddress2" tabindex="6" class="form-control"
 							placeholder="Fill in with another Address" required>
 
 						<!-- ERROR MESSAGE -->
-						<span id="mesaj"></span>	
-		
+						<span id="mesaj"><% if(session.getAttribute("error") != null){
+							out.println(session.getAttribute("error").toString()); session.setAttribute("error","");
+							}%></span>
+
 
 						<!--SIGN UP SUBMIT  -->
 						<input type="submit" name="RegisterSubmit" id="RegisterSubmit"
@@ -121,6 +127,16 @@
 
 					</form>
 				</div>
+				<%
+						}
+						else{
+						%>
+							<!-- ERROR MESSAGE -->
+							<span id="mesaj"><% out.println(session.getAttribute("error").toString() + session.getAttribute("email").toString());
+							%></span>
+							<% 
+						}
+				%>
 			</div>
 		</div>
 	</div>

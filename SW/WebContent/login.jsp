@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" session="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <title>Revenue</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -40,19 +41,26 @@
 					<li class="drodown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">My Account <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<% 
+						
+						if(session.getAttribute("email") == null){
+						%>
 							<li><a href="register.jsp"><span
 									class="glyphicon glyphicon-user"></span> &nbsp; Sign Up </a></li>
 							<li><a href="login.jsp"><span
 									class="glyphicon glyphicon-log-in"></span> &nbsp; Log In</a></li>
+							<%}
+						else
+						{%>
 							<li><a href="#"><span
 									class="glyphicon glyphicon-shopping-cart"></span> &nbsp; My
 									cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
-							<li><a href="#"><span
+							<li><a href="logout.jsp"><span
 									class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out </a></li>
-						</ul>
-					</li>
+							<%} %>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -60,36 +68,53 @@
 
 	<!-- AUTHENTIFICATION -->
 	<div class="container text-center">
-		<h2 style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">AUTHENTIFICATION</h2>
+		<h2
+			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">AUTHENTIFICATION</h2>
 		<br /> <br />
 		<!-- LOGIN PART -->
 		<div class="container3">
 			<div class="left"></div>
 			<div class="right">
+			<% 
+						
+						if(session.getAttribute("email") == null){
+						%>
 				<div class="formBox">
 					<form id="LoginForm" action="LoginUser" method="post"
 						style="display: block;">
-						
+
 						<!-- LOGIN EMAIL -->
-						<label for="LEmail">Email</label>
-							<input type="text" name="LEmail" id="LEmail" tabindex="1"
-								class="form-control" placeholder="Email" required>
-						
+						<label for="LEmail">Email</label> <input type="text" name="LEmail"
+							id="LEmail" tabindex="1" class="form-control" placeholder="Email"
+							required>
+
 						<!-- LOGIN PASSWORD -->
-						<label for="LPassword">Password</label> 
-							<input type="password"
-								name="LPassword" id="LPassword" tabindex="2" class="form-control"
-								placeholder="Password" required> 
-								
+						<label for="LPassword">Password</label> <input type="password"
+							name="LPassword" id="LPassword" tabindex="2" class="form-control"
+							placeholder="Password" required>
+
 						<!-- ERROR MESSAGE -->
-						<span id="mesaj"></span>		
+						<span id="mesaj"><% if(session.getAttribute("error") != null){
+							out.println(session.getAttribute("error").toString()); session.setAttribute("error","");
+							}%></span>
 						
+
 						<!-- LOGIN SUBMIT -->
-						<input type="submit"
-							name="LoginSubmit" id="LoginSubmit" tabindex="3" value="Log In">
-					
+						<input type="submit" name="LoginSubmit" id="LoginSubmit"
+							tabindex="3" value="Log In">
+
 					</form>
 				</div>
+				<%
+						}
+						else{
+						%>
+							<!-- ERROR MESSAGE -->
+							<span id="mesaj"><% out.println(session.getAttribute("error").toString() + session.getAttribute("email").toString());
+							%></span>
+							<% 
+						}
+				%>
 			</div>
 		</div>
 	</div>
