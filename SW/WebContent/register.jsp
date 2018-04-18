@@ -67,7 +67,7 @@
 			<div class="left"></div>
 			<div class="right">
 				<div class="formBoxRegister">
-					<form id="RegisterForm" action="" method="post"
+					<form id="RegisterForm" action="AddUser" method="post"
 						style="display: block;">
 
 						<!-- SIGN UP EMAIL -->
