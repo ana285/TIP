@@ -80,91 +80,87 @@ CREATE TABLE Food(
 	name VARCHAR(30) NOT NULL, 
 	price DOUBLE(10,4) NOT NULL, 
 	id_food_type int NOT NULL,
-  bucatarie VARCHAR(10)NOT NULL,
+  	bucatarie VARCHAR(10) NOT NULL,
+  	image_path VARCHAR(100) NOT NULL,
 	CONSTRAINT food_id_pk PRIMARY KEY(id),
 	CONSTRAINT food_id_type_fk FOREIGN KEY(id_food_type) REFERENCES food_type(id)
 	);
  
- --French
- insert into Food values(1, 'Ratatouille Appetizer Pizza', 8, 1, 'French');
- insert into Food values(2, 'Alsatian Bacon And Onion Tart', 10, 1, 'French');
- insert into Food values(3, 'Salmon Rilletes', 12, 1, 'French');
- insert into Food values(4, 'Black bean soup',11.5, 2, 'French');
- insert into Food values(5, 'French Garlic Soup',11, 2, 'French');
- insert into Food values(6, 'Pumpkin Soup',13, 2, 'French');
- insert into Food values(7, 'French Corn and Radish Salad', 9.5, 3, 'French');
- insert into Food values(8, 'French Roasted Beet Salad', 9, 3, 'French'); 
- insert into Food values(9, 'Salad with Pine Nuts', 11.25, 3, 'French');
- insert into Food values(10, 'Steak Diane', 20, 4, 'French');
- insert into Food values(11, 'Chicken Dijon', 18, 4, 'French');
- insert into Food values(12, 'Basque-Style Fish', 25, 4, 'French');
- insert into Food values(13, 'Mocha Dacquoise Cake', 15, 5, 'French');
- insert into Food values(14, 'Macarons', 18, 5, 'French');
- insert into Food values(15, 'Butter Tart with Blackberries', 14.75, 5, 'French');
- insert into Food values(16, 'Arnaud French 75', 4.75, 6, 'French'); 
- insert into Food values(17, 'Antebellum Mint Julep', 6.75, 6, 'French'); 
- insert into Food values(18, 'The Green Thumb', 5.75, 6, 'French');
+ insert into Food values(1, 'Ratatouille Appetizer Pizza', 8, 1, 'French', './../SW/WebContent/images/french/1.jpg');
+ insert into Food values(2, 'Alsatian Bacon And Onion Tart', 10, 1, 'French', './../SW/WebContent/images/french/2.jpg');
+ insert into Food values(3, 'Salmon Rilletes', 12, 1, 'French', './../SW/WebContent/images/french/3.jpg');
+ insert into Food values(4, 'Black bean soup',11.5, 2, 'French', './../SW/WebContent/images/french/4.jpg');
+ insert into Food values(5, 'French Garlic Soup',11, 2, 'French', './../SW/WebContent/images/french/5.jpg');
+ insert into Food values(6, 'Pumpkin Soup',13, 2, 'French', './../SW/WebContent/images/french/6.jpg');
+ insert into Food values(7, 'French Corn and Radish Salad', 9.5, 3, 'French', './../SW/WebContent/images/french/7.jpg');
+ insert into Food values(8, 'French Roasted Beet Salad', 9, 3, 'French', './../SW/WebContent/images/french/8.jpg'); 
+ insert into Food values(9, 'Salad with Pine Nuts', 11.25, 3, 'French', './../SW/WebContent/images/french/9.jpg');
+ insert into Food values(10, 'Steak Diane', 20, 4, 'French', './../SW/WebContent/images/french/10.jpg');
+ insert into Food values(11, 'Chicken Dijon', 18, 4, 'French', './../SW/WebContent/images/french/11.jpg');
+ insert into Food values(12, 'Basque-Style Fish', 25, 4, 'French', './../SW/WebContent/images/french/12.jpg');
+ insert into Food values(13, 'Mocha Dacquoise Cake', 15, 5, 'French', './../SW/WebContent/images/french/13.jpg');
+ insert into Food values(14, 'Macarons', 18, 5, 'French', './../SW/WebContent/images/french/14.jpg');
+ insert into Food values(15, 'Butter Tart with Blackberries', 14.75, 5, 'French', './../SW/WebContent/images/french/15.jpg');
+ insert into Food values(16, 'Arnaud French 75', 4.75, 6, 'French', './../SW/WebContent/images/french/16.jpg'); 
+ insert into Food values(17, 'Antebellum Mint Julep', 6.75, 6, 'French', './../SW/WebContent/images/french/17.jpg'); 
+ insert into Food values(18, 'The Green Thumb', 5.75, 6, 'French', './../SW/WebContent/images/french/18.jpg');
 
- --Greek 
- insert into Food values(19, 'Bites with Sun-Dried Tomato', 9.75, 1, 'Greek');
- insert into Food values(20, 'Zucchini Pie', 10, 1, 'Greek');
- insert into Food values(21, 'Greek Fried Cheese', 11.25, 1, 'Greek');
- insert into Food values(22, 'Greek Easter Soup', 15, 2, 'Greek');
- insert into Food values(23, 'Avgolemono', 13.7, 2, 'Greek'); 
- insert into Food values(24, 'Artichoke and Fava Stew', 14.5, 2, 'Greek');
- insert into Food values(25, 'Horiatiki', 13, 3, 'Greek'); 
- insert into Food values(26, 'Greek Pasta Salad', 14.80, 3, 'Greek');  
- insert into Food values(27, 'Grilled asparagus and zucchini', 15.80, 3, 'Greek');  
- insert into Food values(28, 'Greek Style Garlic Chicken', 19.80, 4, 'Greek');  
- insert into Food values(29, 'Marinated Greek Chicken Kabobs', 17.80, 4, 'Greek');  
- insert into Food values(30, 'Melitzanes Papoutsakia', 16.85, 4, 'Greek');  
- insert into Food values(31, 'Rhubarb and Berry Compote', 15.85, 5, 'Greek');  
- insert into Food values(32, 'Walnut Spice Cookies', 14.85, 5, 'Greek');  
- insert into Food values(33, 'Cheese Pie', 13.55, 5, 'Greek');  
- insert into Food values(34, 'Santorini Sunrise', 12.55, 6, 'Greek');  
- insert into Food values(35, 'Nectar of the Ancient', 16, 6, 'Greek');  
- insert into Food values(36, 'Rakomelo', 14, 6, 'Greek');  
+ insert into Food values(19, 'Bites with Sun-Dried Tomato', 9.75, 1, 'Greek', './../SW/WebContent/images/greek/19.jpg');
+ insert into Food values(20, 'Zucchini Pie', 10, 1, 'Greek', './../SW/WebContent/images/greek/20.jpg');
+ insert into Food values(21, 'Greek Fried Cheese', 11.25, 1, 'Greek', './../SW/WebContent/images/greek/21.jpg');
+ insert into Food values(22, 'Greek Easter Soup', 15, 2, 'Greek', './../SW/WebContent/images/greek/22.jpg');
+ insert into Food values(23, 'Avgolemono', 13.7, 2, 'Greek', './../SW/WebContent/images/greek/23.jpg'); 
+ insert into Food values(24, 'Artichoke and Fava Stew', 14.5, 2, 'Greek', './../SW/WebContent/images/greek/24.jpg');
+ insert into Food values(25, 'Horiatiki', 13, 3, 'Greek', './../SW/WebContent/images/greek/25.jpg'); 
+ insert into Food values(26, 'Greek Pasta Salad', 14.80, 3, 'Greek','./../SW/WebContent/images/greek/26.jpg');  
+ insert into Food values(27, 'Grilled asparagus and zucchini', 15.80, 3, 'Greek', './../SW/WebContent/images/greek/27.jpeg');  
+ insert into Food values(28, 'Greek Style Garlic Chicken', 19.80, 4, 'Greek', './../SW/WebContent/images/greek/28.jpg');  
+ insert into Food values(29, 'Marinated Greek Chicken Kabobs', 17.80, 4, 'Greek', './../SW/WebContent/images/greek/29.jpg');  
+ insert into Food values(30, 'Melitzanes Papoutsakia', 16.85, 4, 'Greek', './../SW/WebContent/images/greek/30.jpg');  
+ insert into Food values(31, 'Rhubarb and Berry Compote', 15.85, 5, 'Greek', './../SW/WebContent/images/greek/31.jpg');  
+ insert into Food values(32, 'Walnut Spice Cookies', 14.85, 5, 'Greek', './../SW/WebContent/images/greek/32.jpg');  
+ insert into Food values(33, 'Cheese Pie', 13.55, 5, 'Greek', './../SW/WebContent/images/greek/33.jpg');  
+ insert into Food values(34, 'Santorini Sunrise', 12.55, 6, 'Greek','./../SW/WebContent/images/greek/34.jpg');  
+ insert into Food values(35, 'Nectar of the Ancient', 16, 6, 'Greek', './../SW/WebContent/images/greek/35.jpg');  
+ insert into Food values(36, 'Rakomelo', 14, 6, 'Greek', './../SW/WebContent/images/greek/36.jpg');  
+
+ insert into Food values(37, 'Ricotta and Scallion Fritters', 17.5, 1, 'Italian', './../SW/WebContent/images/italian/37.png');
+ insert into Food values(38, 'Pesto Focaccia', 10.8, 1, 'Italian', './../SW/WebContent/images/italian/38.jpg');
+ insert into Food values(39, 'Scallops with Pesto', 14.66, 1, 'Italian', './../SW/WebContent/images/italian/39.jpg');
+ insert into Food values(40, 'Chickpea and Pasta Soup', 15.5, 2, 'Italian', './../SW/WebContent/images/italian/40.jpg');
+ insert into Food values(41, 'White Bean Soup', 10.1, 2, 'Italian', './../SW/WebContent/images/italian/41.jpg');
+ insert into Food values(42, 'Bread and Tomato Soup', 13.2, 2, 'Italian', './../SW/WebContent/images/italian/42.jpg');
+ insert into Food values(43, 'Caprese Salad', 12.5, 3, 'Italian', './../SW/WebContent/images/italian/43.jpg');
+ insert into Food values(44, 'Egg Salad', 16.1, 3, 'Italian', './../SW/WebContent/images/italian/44.jpg');
+ insert into Food values(45, 'Arugula and Pine Nut Salad', 15.2, 3, 'Italian', './../SW/WebContent/images/italian/45.jpg');
+ insert into Food values(46, 'Rugatoni Pajata alla Finta', 23.5, 4, 'Italian', './../SW/WebContent/images/italian/46.jpg');
+ insert into Food values(47, 'Lasagna', 22.9, 4, 'Italian', './../SW/WebContent/images/italian/47.jpg');
+ insert into Food values(48, 'Pizza', 32.1, 4, 'Italian', './../SW/WebContent/images/italian/48.jpg'); 
+ insert into Food values(49, 'Milk Pudding', 13.5, 5, 'Italian', './../SW/WebContent/images/italian/49.jpeg');
+ insert into Food values(50, 'Coffee Granita', 14.9, 5, 'Italian', './../SW/WebContent/images/italian/50.jpg');
+ insert into Food values(51, 'Lemon Granita', 11.1, 5, 'Italian', './../SW/WebContent/images/italian/51.jpg');
+ insert into Food values(52, 'Tricolore', 10.5, 6, 'Italian', './../SW/WebContent/images/italian/52.jpg');
+ insert into Food values(53, 'Strawberry Lassi', 9.9, 6, 'Italian', './../SW/WebContent/images/italian/53.jpg');
+ insert into Food values(54, 'Cinnamon Hot Chocolate', 11, 6, 'Italian', './../SW/WebContent/images/italian/54.jpg');
  
- --Italian
- insert into Food values(37, 'Ricotta and Scallion Fritters', 17.5, 1, 'Italian');
- insert into Food values(38, 'Pesto Focaccia', 10.8, 1, 'Italian');
- insert into Food values(39, 'Scallops with Pesto', 14.66, 1, 'Italian');
- insert into Food values(40, 'Chickpea and Pasta Soup', 15.5, 2, 'Italian');
- insert into Food values(41, 'White Bean Soup', 10.1, 2, 'Italian');
- insert into Food values(42, 'Bread and Tomato Soup', 13.2, 2, 'Italian');
- insert into Food values(43, 'Caprese Salad', 12.5, 3, 'Italian');
- insert into Food values(44, 'Egg Salad', 16.1, 3, 'Italian');
- insert into Food values(45, 'Arugula and Pine Nut Salad', 15.2, 3, 'Italian');
- insert into Food values(46, 'Rugatoni Pajata alla Finta', 23.5, 4, 'Italian');
- insert into Food values(47, 'Lasagna', 22.9, 4, 'Italian');
- insert into Food values(48, 'Pizza', 32.1, 4, 'Italian'); 
- insert into Food values(49, 'Milk Pudding', 13.5, 5, 'Italian');
- insert into Food values(50, 'Coffee Granita', 14.9, 5, 'Italian');
- insert into Food values(51, 'Lemon Granita', 11.1, 5, 'Italian');
- insert into Food values(52, 'Tricolore', 10.5, 6, 'Italian');
- insert into Food values(53, 'Strawberry Lassi', 9.9, 6, 'Italian');
- insert into Food values(54, 'Cinnamon Hot Chocolate', 11, 6, 'Italian');
- 
- 
- --Mexican
- insert into Food values(55, 'Tofu chilli enchiladas', 8.5, 1, 'Mexican');
- insert into Food values(56, 'Mexican chicken wrap', 10.6, 1, 'Mexican');
- insert into Food values(57, 'Chicken Fajitas', 11.66, 1, 'Mexican'); 
- insert into Food values(58, 'Chicken Posole Soup', 11.5, 2, 'Mexican');
- insert into Food values(59, 'Chicken Tortilla Soup', 15.6, 2, 'Mexican');
- insert into Food values(60, 'Mexican Corn-and-Poblano Soup', 13.8, 2, 'Mexican'); 
- insert into Food values(61, 'Mexican beef salad', 14.5, 3, 'Mexican');
- insert into Food values(62, 'Mexican chicken salad', 13.6, 3, 'Mexican');
- insert into Food values(63, 'Layered Christmas Dip', 15.5, 3, 'Mexican');
- insert into Food values(64, 'Mexican beans', 34.7, 4, 'Mexican');
- insert into Food values(65, 'Mexican beef roast', 23.5, 4, 'Mexican');
- insert into Food values(66, 'Mexican bowl', 21.5, 4, 'Mexican');
- insert into Food values(67, 'Coconut and strawberry parfait', 22.3, 5, 'Mexican');
- insert into Food values(68, 'Sweet potato meringue pie', 19.36, 5, 'Mexican');
- insert into Food values(69, 'White chocolate mud cake', 19.36, 5, 'Mexican');
- insert into Food values(70, 'Strawberry vodka cup', 9.3, 6, 'Mexican');
- insert into Food values(71, 'Raspberry wine cocktail', 8.36, 5, 'Mexican');
- insert into Food values(72, 'Strawberry and gin cocktail', 10.67, 5, 'Mexican');
+ insert into Food values(55, 'Tofu chilli enchiladas', 8.5, 1, 'Mexican', './../SW/WebContent/images/mexican/55.jpeg');
+ insert into Food values(56, 'Mexican chicken wrap', 10.6, 1, 'Mexican', './../SW/WebContent/images/mexican/56.jpeg');
+ insert into Food values(57, 'Chicken Fajitas', 11.66, 1, 'Mexican', './../SW/WebContent/images/mexican/57.jpeg'); 
+ insert into Food values(58, 'Chicken Posole Soup', 11.5, 2, 'Mexican', './../SW/WebContent/images/mexican/58.jpg');
+ insert into Food values(59, 'Chicken Tortilla Soup', 15.6, 2, 'Mexican', './../SW/WebContent/images/mexican/59.png');
+ insert into Food values(60, 'Mexican Corn-and-Poblano Soup', 13.8, 2, 'Mexican', './../SW/WebContent/images/mexican/60.jpg'); 
+ insert into Food values(61, 'Mexican beef salad', 14.5, 3, 'Mexican', './../SW/WebContent/images/mexican/61.jpeg');
+ insert into Food values(62, 'Mexican chicken salad', 13.6, 3, 'Mexican', './../SW/WebContent/images/mexican/62.jpeg');
+ insert into Food values(63, 'Layered Christmas Dip', 15.5, 3, 'Mexican', './../SW/WebContent/images/mexican/63.jpg');
+ insert into Food values(64, 'Mexican beans', 34.7, 4, 'Mexican', './../SW/WebContent/images/mexican/64.jpeg');
+ insert into Food values(65, 'Mexican beef roast', 23.5, 4, 'Mexican', './../SW/WebContent/images/mexican/65.jpeg');
+ insert into Food values(66, 'Mexican bowl', 21.5, 4, 'Mexican', './../SW/WebContent/images/mexican/66.jpg');
+ insert into Food values(67, 'Coconut and strawberry parfait', 22.3, 5, 'Mexican', './../SW/WebContent/images/mexican/67.jpeg');
+ insert into Food values(68, 'Sweet potato meringue pie', 19.36, 5, 'Mexican', './../SW/WebContent/images/mexican/68.jpeg');
+ insert into Food values(69, 'White chocolate mud cake', 19.36, 5, 'Mexican', './../SW/WebContent/images/mexican/69.jpeg');
+ insert into Food values(70, 'Strawberry vodka cup', 9.3, 6, 'Mexican', './../SW/WebContent/images/mexican/70.jpeg');
+ insert into Food values(71, 'Raspberry wine cocktail', 8.36, 6, 'Mexican', './../SW/WebContent/images/mexican/71.jpeg');
+ insert into Food values(72, 'Strawberry and gin cocktail', 10.67, 6, 'Mexican', './../SW/WebContent/images/mexican/72.jpeg');
  
 CREATE TABLE Order_food( 
 	id int NOT NULL AUTO_INCREMENT, 
@@ -723,4 +719,3 @@ CREATE TABLE Ingredients_food(
   insert into Ingredients_food values(333, 72, 60, 200);
   
   update Ingredients_food set quantity=quantity/15;
-  
