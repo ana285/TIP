@@ -46,4 +46,37 @@ function afisareImagine(){
 	var y = imagesArray[num];
 	x[0].style.backgroundImage = "url('" + y + "')";
 
-}	
+}
+
+var count=0;
+
+function adauga(id){
+	var btn = document.getElementById('AddButton'+id);
+	//count++;
+	//document.getElementsByClassName("glyphicon glyphicon-shopping-cart")[0].data-count= count;
+	console.log(count);
+}
+
+function afisareDetaliiProduse(id){
+	
+	var modal = document.getElementById('myModal' + id);
+	var btn = document.getElementById('myBtn'+id);
+	var span = document.getElementsByClassName('close')[id-1];
+	
+	
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+	
+	console.log('da');
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	
+	console.log('daa');
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}

@@ -11,6 +11,28 @@
 	color: black;
 }
 
+.glyphicon[data-count]:after{
+	position:absolute;
+	top: -14px;
+	left: 8px;
+	content: attr(data-count);
+	font-size:62%;
+	padding: .65em;
+	border-radius: 100px;
+	line-height: .65em;
+	color: #551A8B;
+	text-align: center;
+	min-width: 2em;
+	font-weight: bold;
+	background: white;
+	border: 1px solid #551A8B;
+}
+
+
+.glyphicon{
+	font-size:17px;
+}
+
 .navbar-brand {
 	float: left;
 	min-height: 55px;
@@ -21,6 +43,13 @@
 	padding: 20px;
 	font-size: 30px;
 	color: white;
+}
+
+.mesaj2{
+	font-family: "Montserrat", sans-serif;
+	font-variant: small-caps;
+	text-transform: uppercase;
+	margin-top: 325px;
 }
 
 .dropdown-menu {
