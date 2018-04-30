@@ -356,4 +356,8 @@ p {
 	font-style: italic;
 }
 
-
+#more{
+	width: 80%;
+	margin-top: 20%;
+	margin-left: 10%;
+}
