@@ -15,6 +15,7 @@ pageEncoding="ISO-8859-1" session="true"%>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/italy.css">
+<link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
 </head>
 
@@ -65,7 +66,7 @@ pageEncoding="ISO-8859-1" session="true"%>
 							<% }
 								else
 							{ %>
-							<li><a href=""><span
+							<li><a href="mycart.jsp"><span
 									class="glyphicon glyphicon-shopping-cart" data-count="0"></span> &nbsp; My
 									cart </a></li>
 							<li><a href="myaccount.jsp"><span
@@ -135,7 +136,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Ricotta &amp; Scallion Fritters </h4>
 					<button id="myBtn1" class="btn3"
 						onclick="afisareDetaliiProduse('1')">MORE</button>
-					<button id="AddButton37" name="btn37" class="btn3">
+					<button id="AddButton37" name="btn37" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -177,7 +183,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Pesto Focaccia</h4>
 					<button id="myBtn2" class="btn3"
 						onclick="afisareDetaliiProduse('2')">MORE</button>
-					<button id="AddButton38" name="btn37" class="btn3">
+					<button id="AddButton38" name="btn37" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -218,7 +229,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 class="pull-right">$24.99</h4>
 					<h4 style="color: #337AB7">Scallops with Pesto</h4>
 					<button id="myBtn3" class="btn3" onclick="afisareDetaliiProduse('3')">MORE</button>
-					<button id="AddButton39" name="btn39" class="btn3">
+					<button id="AddButton39" name="btn39" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -263,7 +279,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 class="pull-right">$24.99</h4>
 					<h4 style="color: #337AB7">Chickpea With Pesto</h4>
 					<button id="myBtn4" class="btn3" onclick="afisareDetaliiProduse(4)">MORE</button>
-					<button id="AddButton40" name="btn40" class="btn3">
+					<button id="AddButton40" name="btn40" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -304,7 +325,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">White Bean      
 					Soup</h4>
 					<button id="myBtn5" class="btn3" onclick="afisareDetaliiProduse(5)">MORE</button>
-					<button id="AddButton41" name="btn41" class="btn3">
+					<button id="AddButton41" name="btn41" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -345,7 +371,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 class="pull-right">$24.99</h4>
 					<h4 style="color: #337AB7">Bread &amp; Tomato Soup</h4>
 					<button id="myBtn6" class="btn3" onclick="afisareDetaliiProduse(6)">MORE</button>
-					<button id="AddButton42" name="btn42" class="btn3">
+					<button id="AddButton42" name="btn42" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -390,7 +421,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 class="pull-right">$24.99</h4>
 					<h4 style="color: #337AB7"> Caprese Salad</h4>
 					<button id="myBtn7" class="btn3" onclick="afisareDetaliiProduse(7)">MORE</button>
-					<button id="AddButton43" name="btn43" class="btn3">
+					<button id="AddButton43" name="btn43" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -430,8 +466,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 class="pull-right">$24.99</h4>
 					<h4 style="color: #337AB7">Egg Salad</h4>
 					<button id="myBtn8" class="btn3" onclick="afisareDetaliiProduse(8)">MORE</button>
-					<button id="AddButton44" name="btn44" class="btn3">
-						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
+					<button id="AddButton44" name="btn44" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
 				<div id="myModal8" class="modal">
@@ -470,7 +510,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 class="pull-right">$24.99</h4>
 					<h4 style="color: #337AB7">Aragula &amp; Pine Nut Salad</h4>
 					<button id="myBtn9" class="btn3" onclick="afisareDetaliiProduse(9)">MORE</button>
-					<button id="AddButton45" name="btn45" class="btn3">
+					<button id="AddButton45" name="btn45" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -516,7 +561,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Rugatoni Pajata Alla Finta</h4>
 					<button id="myBtn10" class="btn3"
 						onclick="afisareDetaliiProduse(10)">MORE</button>
-					<button id="AddButton46" name="btn46" class="btn3">
+					<button id="AddButton46" name="btn46" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -557,7 +607,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Lasagna</h4>
 					<button id="myBtn11" class="btn3"
 						onclick="afisareDetaliiProduse(11)">MORE</button>
-					<button id="AddButton47" name="btn47" class="btn3">
+					<button id="AddButton47" name="btn47" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -598,7 +653,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Pizza</h4>
 					<button id="myBtn12" class="btn3"
 						onclick="afisareDetaliiProduse(12)">MORE</button>
-					<button id="AddButton48" name="btn48" class="btn3">
+					<button id="AddButton48" name="btn48" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -644,7 +704,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Milk Pudding</h4>
 					<button id="myBtn13" class="btn3"
 						onclick="afisareDetaliiProduse(13)">MORE</button>
-					<button id="AddButton49" name="btn49" class="btn3">
+					<button id="AddButton49" name="btn49" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -687,7 +752,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Coffe Granita</h4>
 					<button id="myBtn14" class="btn3"
 						onclick="afisareDetaliiProduse(14)">MORE</button>
-					<button id="AddButton50" name="btn50" class="btn3">
+					<button id="AddButton50" name="btn50" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -728,7 +798,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Lemon Granita</h4>
 					<button id="myBtn15" class="btn3"
 						onclick="afisareDetaliiProduse(15)">MORE</button>
-					<button id="AddButton51" name="btn51" class="btn3">
+					<button id="AddButton51" name="btn51" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -774,7 +849,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Tricolore</h4>
 					<button id="myBtn16" class="btn3"
 						onclick="afisareDetaliiProduse(16)">MORE</button>
-					<button id="AddButton52" name="btn52" class="btn3">
+					<button id="AddButton52" name="btn52" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -815,7 +895,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Strawberry Lassi</h4>
 					<button id="myBtn17" class="btn3"
 						onclick="afisareDetaliiProduse(17)">MORE</button>
-					<button id="AddButton53" name="btn53" class="btn3">
+					<button id="AddButton53" name="btn53" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
@@ -856,7 +941,12 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<h4 style="color: #337AB7">Cinnamon Hot Chocolate</h4>
 					<button id="myBtn18" class="btn3"
 						onclick="afisareDetaliiProduse(18)">MORE</button>
-					<button id="AddButton54" name="btn54" class="btn3">
+					<button id="AddButton54" name="btn54" class="btn3" onclick="<% 
+								if(session.getAttribute("email") == null)
+								{%>
+									location.href='login.jsp';
+								<% }%>
+								">
 						ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
 					</button>
 				</div>
