@@ -1,3 +1,72 @@
+var vect=[];
+
+function loadKitchen(kitchen){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       
+	    	var raspuns = JSON.parse(this.responseText);
+	    	var tip;
+	    	for (var i=0;i<raspuns.length;i++){
+	    		
+	    		console.log(raspuns[i].name)
+	    		tip = raspuns[i].type;
+	    		vect[i] = "<p>";
+	    		for(var j = 0; j < raspuns[i].ingredients.length;++j)
+	    			{
+	    				vect[i] += "&emsp;&emsp;&emsp;"+raspuns[i].ingredients[j] + "<br\>";
+	    			}
+	    		vect[i] += "</p>";
+	    			console.log(vect[i]);
+	    			document.getElementById(tip+"_div").innerHTML +=
+		'<div class="col-sm-4 thumb">'+
+			'<div class="thumbnail">'+
+				'<img src="'+raspuns[i].img+'" alt="'+raspuns[i].name+'">'+
+				'<div class="caption">'+
+					'<h4 class="pull-right">'+raspuns[i].price+'$</h4>'+
+					'<h4 style="color: #337AB7">'+raspuns[i].name+'</h4>'+
+					'<button id="myBtn'+ i +'" class="btn3" onclick="afisareDetaliiProduse('+ i +')">MORE</button>'+
+					'<button id="AddButton20" name="btn20" class="btn3"> ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span></button>'+
+				'</div>'+
+				'<div id="myModal'+ i +'" class="modal">'+
+					'<div class="modal-content">'+
+						'<div class="modal-header">'+
+							'<span class="close">&times;</span>'+
+						'</div>'+
+						'<div class="modal-body">'+
+							'<div class="container5">'+
+								'<div class="left">'+
+								'<img id = "more" class = "thumbnail" src="'+raspuns[i].img+'" alt="'+raspuns[i].name+'">'+
+								'</div>'+
+								'<div class="right">'+
+									'<br />'+
+									'<p style="font-family: Montsserrat; text-align: center; font-style: italic; font-size: 1.7em;">'+
+									raspuns[i].name+'</p>'+
+									'<br /> <br />'+
+									'<p>&nbsp; Ingredients:</p>'+
+									vect[i]+''+
+								'</div>'+
+								
+							'</div>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+			'</div>'+
+		'</div>';
+	    		
+	    	}
+
+	    }
+	};
+	xhttp.open("GET", kitchen, true);
+	xhttp.send();
+}
+function loadImg(imagine){
+	console.log("stefana");
+	var x = document.getElementsByClassName("left");
+	var y = "images/mexican/70.jpeg";
+	x[15].style.backgroundImage = "url('" + y + "')";
+}
 function funcXML(xml) {
     var xmlDoc = xml.responseXML;
 
@@ -61,7 +130,7 @@ function afisareDetaliiProduse(id){
 	
 	var modal = document.getElementById('myModal' + id);
 	var btn = document.getElementById('myBtn'+id);
-	var span = document.getElementsByClassName('close')[id-1];
+	var span = document.getElementsByClassName('close')[id];
 	
 	
 	btn.onclick = function() {

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import data.Product;
 import data.SessionUser;
 import data.User;
 
@@ -26,7 +27,7 @@ public class DBManager {
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
-	PreparedStatement selectUsers;
+	
 	private static DBManager instance = new DBManager();
 	private DBManager(){
 		try{
@@ -142,7 +143,66 @@ public class DBManager {
 		return false;
 	}
 
-
+	public ArrayList<String> getIngredients_List(String productName){
+		ArrayList<String> ingredients = new ArrayList<String>() ;
+		String sql = "SELECT i.name as i_name FROM ingredients i, ingredients_food ifood, food f "
+				+ "WHERE f.id=ifood.id_food AND ifood.id_ingredients=i.id AND f.name=?;";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, productName);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String s = rs.getString("i_name");
+				System.out.println(s);
+				ingredients.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ingredients;
+	}
 	
+	public ArrayList<Product> getProducts(String kitchen){
+		ArrayList<Product> products = new ArrayList<Product>();
+		ResultSet rs2;
+		String sql = "Select f.name as f_name, f.price, f.image_path, ft.name as ft_name " + 
+				"from food f, food_type ft " + 
+				"where f.id_food_type=ft.id AND bucatarie='"+kitchen+"';";
+		try {
+			//PreparedStatement pstmt = con.prepareStatement(sql);
+			//pstmt.setString(1, kitchen);
+			Statement pstmt = con.createStatement();
+			
+			rs2 = pstmt.executeQuery(sql);
+			int i=0;
+			//rs.last();
+			
+			//System.out.println(rs.getRow());
+			//rs.beforeFirst();
+			while(rs2.next()) {
+				System.out.println(i);
+				Product pr = new Product();
+				
+				pr.setName(rs2.getString("f_name"));
+				pr.setImg(rs2.getString("image_path"));
+				pr.setPrice(rs2.getDouble("price"));
+				pr.setKitchen(kitchen);
+				pr.setType(rs2.getString("ft_name"));
+				String name = rs2.getString("f_name");
+				System.out.println(name);
+				pr.setIngredients(getIngredients_List(name));
+				products.add(pr);
+				
+				i++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return products;
+	}
 
 }

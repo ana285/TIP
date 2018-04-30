@@ -54,5 +54,7 @@
 	<classpathentry kind="lib" path="lib/jackson-databind-2.9.5.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.9.5.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Core"/>
+	<classpathentry kind="lib" path="lib/standard.jar"/>
+	<classpathentry kind="lib" path="lib/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
