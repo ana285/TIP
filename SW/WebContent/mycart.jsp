@@ -14,13 +14,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
 <link rel="stylesheet" href="css/file.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
 </head>
 
-<body onload="afisareImagine()">
+<body>
 	<!-- BARA DE NAVIGARE -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -55,8 +56,8 @@
 						else
 						{%>
 							<li><a href="mycart.jsp"><span
-									class="glyphicon glyphicon-shopping-cart" data-count="0"></span> &nbsp; My
-									cart </a></li>
+									class="glyphicon glyphicon-shopping-cart" data-count="0"></span>
+									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
 							<li><a href="logout.jsp"><span
@@ -69,83 +70,114 @@
 	</nav>
 
 	<div class="container text-center">
-		<h2
-			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">CREATE
-			ACCOUNT</h2>
-		<br /> <br />
-		<div class="container4">
-			<div class="left"></div>
-			<div class="right">
-			<% 
-			if(session.getAttribute("email") == null){
-						%>
-				<div class="formBoxRegister">
-					<form id="RegisterForm" action="AddUser" method="post"
-						style="display: block;">
-
-						<!-- SIGN UP EMAIL -->
-						<label for="SEmail">Email</label> <input type="email"
-							name="SEmail" id="SEmail" tabindex="1" class="form-control"
-							placeholder="Fill in with your Email address" value="" required>
 
 
-						<!-- SIGN UP NAME -->
-						<label for="SName">Name</label> <input type="text" name="SName"
-							id="SName" tabindex="2" class="form-control"
-							placeholder="Fill in with your Name" value="" required>
+		<div class="row">
+			<div class="shopping-cart">
+				<!-- Title -->
+				<h2
+					style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">SHOPPING
+					CART</h2>
+				<br />
+				<br />
 
-
-						<!-- SIGN UP PASSWORD -->
-						<label for="SPassword">Password</label> <input type="password"
-							name="SPassword" id="SPassword" tabindex="3" class="form-control"
-							placeholder="Fill in with your Password" required>
-
-
-						<!-- SIGN UP TELEPHONE -->
-						<label for="STelephone">Telephone</label> <input type="text"
-							name="STelephone" id="STelephone" tabindex="4"
-							class="form-control"
-							placeholder="Fill in with your Telephone number" required>
-
-
-						<!-- SIGN UP ADDRESS -->
-						<label for="SAddress">Address</label> <input type="text"
-							name="SAddress" id="SAddress" tabindex="5" class="form-control"
-							placeholder="Fill in with your Address" required> <label
-							for="SAddress2">Another Address</label> <input type="text"
-							name="SAddress2" id="SAddress2" tabindex="6" class="form-control"
-							placeholder="Fill in with another Address" required>
-
-						<!-- ERROR MESSAGE -->
-						<span id="mesaj"><% if(session.getAttribute("error") != null){
-							out.println(session.getAttribute("error").toString()); session.setAttribute("error","");
-							}%></span>
-
-
-						<!--SIGN UP SUBMIT  -->
-						<input type="submit" name="RegisterSubmit" id="RegisterSubmit"
-							tabindex="7" value="Sign Up">
-
-
-					</form>
-				</div>
 				<%
-						}
-						else{
-						%>
-							<!-- ERROR MESSAGE -->
-							<span id="mesaj2"><% out.println(session.getAttribute("error").toString() + session.getAttribute("email").toString());
-							%></span>
-							<% 
-						}
+					
+					int x = 3; // NUMARUL DE MENIURI COMANDATE - AICI E O PRESUPUNERE
+					
+					for(int i=0;i<x;++i){
 				%>
+				
+				<!-- Product -->
+				<div class="items">
+					<div class="buttons">
+						<button type="button" style="background:white; color:black; border:none;">
+					      <span class="glyphicon glyphicon-remove" style="color:#551A8B"></span>
+					    </button> 
+					</div>
+
+					<div class="image">
+						<img src="images/french/6.jpg" alt="" /> <!-- TREBUIE LUATA SI IMAGINEA DIN BAZA DE DATE --> 
+					</div>
+
+					<div class="description">
+						<span>P1</span> <span><% out.print("French Cuisine"); %></span>
+					</div>
+
+					<div class="quantity">
+						<button class="plus-btn" type="button" name="button">
+							<span class="glyphicon glyphicon-plus" style="color:#551A8B"></span>
+						</button>
+						<input type="text" name="name" value="1">
+						<button class="minus-btn" type="button" name="button">
+							<span class="glyphicon glyphicon-minus" style="color:#551A8B"></span>
+						</button>
+					</div>
+
+					<div class="total-price"><% out.print("$24.99"); %></div>
+					
+				</div>
+				
+				<%
+					}
+				%>
+				<br/>
+				<% if(x!=0){ %>
+				<p style="text-align:right; font-size:16px; font-family:Montserrat; font-style:italic;">
+					TOTAL : $24.99 &nbsp; &nbsp;
+				</p>
+				<% } else{ %>
+				<br/>
+				<br/>
+				<h2
+					style="font-family: Montsserrat; font-style: italic; font-size: 1.6em;">YOUR SHOPPING
+					CART IS EMPTY!</h2>
+				<% } %>
 			</div>
 		</div>
-	</div>
 
+	</div>
+	
+	<script>
+			
+			$('.minus-btn').on('click', function(e) {
+			    //e.preventDefault();
+			    var $this = $(this);
+			    var $input = $this.closest('div').find('input');
+			    var value = parseInt($input.val());
+			 
+			    if (value > 1) {
+			        value = value - 1;
+			    } else {
+			        value = 0;
+			    }
+			 
+			  $input.val(value);
+			 
+			});
+			 
+			$('.plus-btn').on('click', function(e) {
+			    //e.preventDefault();
+			    var $this = $(this);
+			    var $input = $this.closest('div').find('input');
+			    var value = parseInt($input.val());
+			 
+			    if (value < 100) {
+			        value = value + 1;
+			    } else {
+			        value =100;
+			    }
+			 
+			    $input.val(value);
+			});
+	
+	</script>
+
+	<!-- FOOTER TI PROIECT 2018 -->
 	<footer class="container-fluid text-center">
 		<div>&copy; TI - PROIECT 2018</div>
 	</footer>
+
 
 </body>
 </html>

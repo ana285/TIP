@@ -16,6 +16,7 @@ pageEncoding="ISO-8859-1" session="true"%>
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/file.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
 </head>
 
@@ -53,7 +54,7 @@ pageEncoding="ISO-8859-1" session="true"%>
 							<%}
 						else
 						{%>
-							<li><a href=""><span
+							<li><a href="mycart.jsp"><span
 									class="glyphicon glyphicon-shopping-cart" data-count="0"></span> &nbsp; My
 									cart </a></li>
 							<li><a href="myaccount.jsp"><span
