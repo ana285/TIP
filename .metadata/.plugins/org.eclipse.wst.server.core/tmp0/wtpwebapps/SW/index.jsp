@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1" session="true"%>
+	pageEncoding="ISO-8859-1" session="true" import="data.Cart"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,25 +43,36 @@ pageEncoding="ISO-8859-1" session="true"%>
 					<li class="drodown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">My Account <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<% 
-						
-						if(session.getAttribute("email") == null){
-						%>
+							<%
+								if (session.getAttribute("email") == null) {
+							%>
 							<li><a href="register.jsp"><span
 									class="glyphicon glyphicon-user"></span> &nbsp; Sign Up </a></li>
 							<li><a href="login.jsp"><span
 									class="glyphicon glyphicon-log-in"></span> &nbsp; Log In</a></li>
-							<%}
-						else
-						{%>
+							<%
+								} else {
+							%>
 							<li><a href="mycart.jsp"><span
-									class="glyphicon glyphicon-shopping-cart" data-count="0"></span> &nbsp; My
-									cart </a></li>
+									class="glyphicon glyphicon-shopping-cart"
+									data-count="
+<%Cart cart = (Cart) session.getAttribute("cart");
+				if (cart != null) {
+					int y = 0;
+					int x = cart.getOrder().size();
+					for (int i = 0; i < x; ++i) {
+						y += cart.getOrder().get(i).getQuantity();
+					}
+					out.println(y);
+				}%>"></span>
+									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
 							<li><a href="logout.jsp"><span
 									class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out </a></li>
-									<%} %>
+							<%
+								}
+							%>
 						</ul></li>
 				</ul>
 			</div>
@@ -84,10 +95,14 @@ pageEncoding="ISO-8859-1" session="true"%>
 				<div class="carousel-caption">
 					<h1>Welcome to Revenue!</h1>
 					<br />
-					<% if(session.getAttribute("email")==null){ %>
+					<%
+						if (session.getAttribute("email") == null) {
+					%>
 					<button onclick="location.href='register.jsp'" name="button"
 						class="btn btn-default">Create Account</button>
-					<% } %>
+					<%
+						}
+					%>
 				</div>
 			</div>
 
@@ -129,8 +144,7 @@ pageEncoding="ISO-8859-1" session="true"%>
 		<h2
 			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">START
 			THE DAY WITH US!</h2>
-		<br />
-		<br />
+		<br /> <br />
 
 		<div class="row">
 			<div class="col-md-6">

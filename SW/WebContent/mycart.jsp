@@ -58,7 +58,16 @@
 							session.setAttribute("page", "mycart.jsp");
 							%>
 							<li><a href="mycart.jsp"><span
-									class="glyphicon glyphicon-shopping-cart" data-count="0"></span>
+									class="glyphicon glyphicon-shopping-cart" data-count="
+									<%Cart cart = (Cart) session.getAttribute("cart");
+											if(cart != null){
+												int y=0;
+												int x = cart.getOrder().size();
+												for(int i=0;i<x;++i){
+													y+=cart.getOrder().get(i).getQuantity();
+												}
+												out.println(y);
+												}%>"></span>
 									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>

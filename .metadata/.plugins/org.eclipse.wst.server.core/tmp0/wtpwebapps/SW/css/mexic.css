@@ -347,6 +347,23 @@ p {
 	border: 1px solid #FF3232;
 }
 
+.btnAdd{
+	font-size: 14px;
+	color: #fff;
+	font-family: "Montserrat", sans-serif;
+	font-variant: small-caps;
+	padding: 8px 22px;
+	background: #FF3232;
+	border: 2px solid #FFF;
+	border-radius: 7px;
+}
+
+.btnAdd:hover{
+	background-color: #FFF;
+	color: #FF3232;
+	border: 1px solid #FF3232;
+}
+
 .container5 .right{
 	float: right;
 	width: 50%;
