@@ -57,7 +57,7 @@ public class LoginUser extends HttpServlet {
 	}
 	private static URI getBaseURI() {
 		//TODO change the port to whatever is the server running on
-		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+		return UriBuilder.fromUri("http://localhost:8080/SSW/").build();
 	}
 
 	/**
@@ -94,48 +94,6 @@ public class LoginUser extends HttpServlet {
 				String data = response.readEntity(String.class);
 				int status = response.getStatus();
 				System.out.println(data);
-				/*JSONObject mJsonObject = new JSONObject();
-				mJsonObject = response.readEntity(JSONObject.class);
-				JSONObject userJObject;
-				JSONObject statusJObject;
-				String stats2;
-				try {
-					userJObject = mJsonObject.getJSONObject("user");
-					statusJObject = userJObject.getJSONObject("id");
-					stats2 = statusJObject.getString("email");
-					System.out.println(stats2);
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-
-				}
-				 */
-				/*DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder;
-				Document doc;
-				try {
-					FileOutputStream file = new FileOutputStream("user.xml");
-					file.write(response.readEntity(Byte.class));
-					file.close();
-					FileInputStream file2 = new FileInputStream("user.xml");
-					dBuilder = dbFactory.newDocumentBuilder();
-					doc = dBuilder.parse(file2);
-					doc.getDocumentElement().normalize();
-			        System.out.print("Root element: ");
-			        System.out.println(doc.getDocumentElement().getNodeName());
-			        NodeList nList = doc.getElementsByTagName("id");
-			        System.out.println(nList.toString());
-				} catch (ParserConfigurationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch (SAXException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-
-				//				deserialize json
-				
 
 				if (status==200){
 					ObjectMapper mapper = new ObjectMapper();
@@ -156,6 +114,7 @@ public class LoginUser extends HttpServlet {
 					session.setAttribute("telephone", SessionUser.getInstance().getUser().getTelephone());
 					session.setAttribute("address1", SessionUser.getInstance().getUser().getAddress1());
 					session.setAttribute("address2", SessionUser.getInstance().getUser().getAddress2());
+					session.setAttribute("cart", null);
 					session.setAttribute("error", "You are already loged in as: ");
 					System.out.println("" + session.getAttribute("telephone"));
 					resp.sendRedirect("index.jsp");

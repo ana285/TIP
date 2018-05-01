@@ -204,5 +204,32 @@ public class DBManager {
 		}
 		return products;
 	}
+	
+	public Product getProduct(String prod){
+		Product pr = new Product();
+		ResultSet rs2;
+		String sql = "Select f.name as f_name, f.bucatarie, f.price, f.image_path, ft.name as ft_name " + 
+				"from food f, food_type ft " + 
+				"where f.id_food_type=ft.id AND f.name='"+prod+"';";
+		try {
+			Statement pstmt = con.createStatement();
+			rs2 = pstmt.executeQuery(sql);
+
+			if(rs2.next()) {
+				pr.setName(rs2.getString("f_name"));
+				pr.setImg(rs2.getString("image_path"));
+				pr.setPrice(rs2.getDouble("price"));
+				pr.setKitchen(rs2.getString("bucatarie"));
+				pr.setType(rs2.getString("ft_name"));
+				String name = rs2.getString("f_name");
+				System.out.println(name);
+				pr.setIngredients(getIngredients_List(name));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pr;
+	}
 
 }

@@ -15,6 +15,8 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/file.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
 </head>
 
@@ -34,10 +36,10 @@
 					src="images/Revenue.png" alt="Revenue" id="icon2">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.jsp">Home</a></li>
-					<li><a href="#">Greek Kitchen</a></li>
-					<li><a href="#">Mexican Kitchen</a></li>
-					<li><a href="#">Italian Kitchen</a></li>
-					<li><a href="#">French Kitchen</a></li>
+					<li><a href="greek.jsp">Greek Kitchen</a></li>
+					<li><a href="mexic.jsp">Mexican Kitchen</a></li>
+					<li><a href="italian.jsp">Italian Kitchen</a></li>
+					<li><a href="french.jsp">French Kitchen</a></li>
 					<li class="drodown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">My Account <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -51,8 +53,8 @@
 							<%
 								} else {
 							%>
-							<li><a href="#"><span
-									class="glyphicon glyphicon-shopping-cart"></span> &nbsp; My
+							<li><a href="mycart.jsp"><span
+									class="glyphicon glyphicon-shopping-cart" data-count="0"></span> &nbsp; My
 									cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>

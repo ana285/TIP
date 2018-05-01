@@ -13,8 +13,12 @@ public class User {
 	private String telephone;
 	private String address1;
 	private String address2;
+
 	
-	public User(){}
+	public User()
+	{
+		//order = new Cart();
+	}
 	
 	public int getId() {
 		return id;
@@ -81,5 +85,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 
 }

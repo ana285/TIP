@@ -23,7 +23,6 @@
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="data.UserDeserializer"/>
 <fullyQualifiedTypeName name="junit.runner.Version"/>
-<fullyQualifiedTypeName name="data.SessionUser"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.module.SimpleModule"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.deser.std.StdDeserializer"/>
@@ -40,4 +39,10 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="data.SessionUser"/>
+<fullyQualifiedTypeName name="data.Product"/>
+<fullyQualifiedTypeName name="data.ProductDeserializer"/>
+<fullyQualifiedTypeName name="data.OrderProduct"/>
+<fullyQualifiedTypeName name="data.Cart"/>
 </qualifiedTypeNameHistroy>

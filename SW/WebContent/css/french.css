@@ -369,6 +369,24 @@ p {
 	border: 1px solid #E587B5;
 }
 
+.btnAdd{
+	font-size: 14px;
+	color: #fff;
+	font-family: "Montserrat", sans-serif;
+	font-variant: small-caps;
+	padding: 8px 22px;
+	background: #E587B5;
+	border: 2px solid #FFF;
+	border-radius: 7px;
+}
+
+.btnAdd:hover{
+	background-color: #FFF;
+	color: #E587B5;
+	border: 1px solid #E587B5;
+}
+
+
 .container5 .right{
 	float: right;
 	width: 50%;

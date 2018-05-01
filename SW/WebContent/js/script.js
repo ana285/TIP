@@ -26,8 +26,10 @@ function loadKitchen(kitchen){
 					'<h4 class="pull-right">'+raspuns[i].price+'$</h4>'+
 					'<h4 style="color: #337AB7">'+raspuns[i].name+'</h4>'+
 					'<button id="myBtn'+ i +'" class="btn3" onclick="afisareDetaliiProduse('+ i +')">MORE</button>'+
-					'<button id="AddButton20" name="btn20" class="btn3"> ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span></button>'+
-				'</div>'+
+					'<form action="/AddCart" method="POST">'+
+					'<button id="AddButton'+ i +'" name="AddButton" value="'+raspuns[i].name+'" class="btnAdd" type="submit"> ADD&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span></button>'+
+					'</form>'+
+					'</div>'+
 				'<div id="myModal'+ i +'" class="modal">'+
 					'<div class="modal-content">'+
 						'<div class="modal-header">'+

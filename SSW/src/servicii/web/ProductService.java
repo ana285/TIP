@@ -26,8 +26,6 @@ public class ProductService {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<Product> getProducts(@PathParam("kitchen") String kitchen) {
         System.out.println("kitchen");
-        return DBManager.getinstance().getProducts(kitchen);
-        
-        
+        return DBManager.getinstance().getProducts(kitchen);  
     }
 }

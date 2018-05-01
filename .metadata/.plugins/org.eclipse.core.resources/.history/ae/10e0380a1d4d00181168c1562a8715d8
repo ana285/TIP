@@ -1,0 +1,49 @@
+package data;
+
+import java.util.ArrayList;
+
+public class Cart {
+	private ArrayList<OrderProduct> order;
+	private double totalPrice;
+	
+	private Cart()
+	{
+		order = new ArrayList<OrderProduct>();
+		setTotalPrice(0);
+	}
+	
+	public void DeleteCart()
+	{
+		order = null;
+		totalPrice = 0;
+	}
+	
+	public void AddProduct(Product prod, int quantity)
+	{
+		OrderProduct product = new OrderProduct();
+		product.setProduct(prod);
+		product.setQuantity(quantity);
+		order.add(product);
+		setTotalPrice(getTotalPrice() + prod.getPrice()*quantity);
+	}
+	
+	public void DeleteProduct(String prodName)
+	{
+		for(int i = 0; i < order.size(); ++i)
+		{
+			if(order.get(i).getProduct().getName().equals(prodName))
+			{
+				order.remove(i);
+			}
+		}
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+}

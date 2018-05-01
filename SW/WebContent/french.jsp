@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1" session="true"%>
+	pageEncoding="ISO-8859-1" session="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,8 +67,8 @@ pageEncoding="ISO-8859-1" session="true"%>
 								else
 							{ %>
 							<li><a href="mycart.jsp"><span
-									class="glyphicon glyphicon-shopping-cart" data-count="0"></span> &nbsp; My
-									cart </a></li>
+									class="glyphicon glyphicon-shopping-cart" data-count="0"></span>
+									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
 							<li><a href="logout.jsp"><span
@@ -80,7 +80,7 @@ pageEncoding="ISO-8859-1" session="true"%>
 		</div>
 	</nav>
 
-	
+
 	<div id="myCarousel" class="carousel slide col-lg-12 col-offset-2">
 		<div class="carousel-inner">
 			<div class="item active">
@@ -93,13 +93,14 @@ pageEncoding="ISO-8859-1" session="true"%>
 		<br />
 	</div>
 
-	<div class="container text-center">	
-			<%
+	<div class="container text-center">
+		<%
 				if(session.getAttribute("name")!=null){
 			%>
-			<h2 style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;"> 
-				Bienvenue, 
-				<%
+		<h2
+			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">
+			Bienvenue,
+			<%
 				String[] p = session.getAttribute("name").toString().split(" ");
 				String nume="";
 				for(int i=0;i<p.length;++i)
@@ -108,70 +109,91 @@ pageEncoding="ISO-8859-1" session="true"%>
 					//out.print(session.getAttribute("name").toString().substring(0,1).toUpperCase() + session.getAttribute("name").toString().substring(1).toLowerCase());			
 				}
 				out.print(nume);
-				%> ! 
-				What do you want to eat today?
-			</h2>
-			<%}
+				%>
+			! What do you want to eat today?
+		</h2>
+		<%}
 				else {
 			%>
-			<h2 style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;"> 
-				Bienvenue ! What do you want to eat today?
-			</h2>
-			<% } %>
-		<br />
-		<br />
-		
-		<!-- APPETIZERS -->
-		
-		<h3 style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;" id="Appetizers">Appetizers</h3>
-		<hr>
-		<div id="Appetizers_div">
+		<h2
+			style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">
+			Bienvenue ! What do you want to eat today?</h2>
+		<% } %>
+		<br /> <br />
 
-		</div>
-		
+		<!-- APPETIZERS -->
+
+		<h3
+			style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;"
+			id="Appetizers">Appetizers</h3>
+		<hr>
+		<div id="Appetizers_div"></div>
+
 		<!-- SOUP -->
 		&nbsp;
-		<h3 style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;" id="Soup">Soup</h3>
+		<h3
+			style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;"
+			id="Soup">Soup</h3>
 		<hr>
-		<div id="Soup_div">
+		<div id="Soup_div"></div>
 
-		</div>
-		
 		<!-- SALAD -->
 		&nbsp;
-		<h3 style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;" id="Salad"> Salad </h3>
+		<h3
+			style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;"
+			id="Salad">Salad</h3>
 		<hr>
-		<div id="Salad_div">
+		<div id="Salad_div"></div>
 
-		</div>
-		
 		<!-- ENTREES -->
 		&nbsp;
-		<h3 style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;" id="Entrees"> Entrees/Main dishes</h3>
+		<h3
+			style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;"
+			id="Entrees">Entrees/Main dishes</h3>
 		<hr>
-		<div id="Entrees/MainDishes_div">
+		<div id="Entrees/MainDishes_div"></div>
 
-		</div>
-		
-		
+
 		<!-- DESSERT -->
 		&nbsp;
-		<h3 style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;" id="Dessert"> Dessert </h3>
+		<h3
+			style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;"
+			id="Dessert">Dessert</h3>
 		<hr>
-		<div id="Dessert_div">
+		<div id="Dessert_div"></div>
 
-		</div>
-		
-		
+
 		<!-- DRINKS -->
 		&nbsp;
-		<h3 style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;" id="Drinks"> Drinks</h3>
+		<h3
+			style="text-transform: uppercase; font-family: 'Montserrat'; font-style: italic;"
+			id="Drinks">Drinks</h3>
 		<hr>
-		<div id="Drinks_div">
+		<div id="Drinks_div"></div>
 
-		</div>
+		<% if( session.getAttribute("email") == null)
+			{
+			
+			%>		
+			
+			<style type = "text/css">
+			
+				.btnAdd{
+				display: none;
+				}
+			</style>
+			
+			<%
+			}
+		else{
+			session.setAttribute("page","french.jsp");
+		}
+			%>
+
 	</div>
-	
+
+
+
 
 	<footer class="container-fluid text-center">
 		<div>&copy; TI - PROIECT 2018</div>

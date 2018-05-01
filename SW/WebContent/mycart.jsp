@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" session="true"%>
+	pageEncoding="ISO-8859-1" session="true" import="data.Cart"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +54,9 @@
 									class="glyphicon glyphicon-log-in"></span> &nbsp; Log In</a></li>
 							<%}
 						else
-						{%>
+						{
+							session.setAttribute("page", "mycart.jsp");
+							%>
 							<li><a href="mycart.jsp"><span
 									class="glyphicon glyphicon-shopping-cart" data-count="0"></span>
 									&nbsp; My cart </a></li>
@@ -83,38 +85,45 @@
 
 				<%
 					
-					int x = 3; // NUMARUL DE MENIURI COMANDATE - AICI E O PRESUPUNERE
-					
+					Cart cart = (Cart) session.getAttribute("cart");
+				if(cart != null){
+					int x = cart.getOrder().size();
 					for(int i=0;i<x;++i){
 				%>
 				
 				<!-- Product -->
 				<div class="items">
 					<div class="buttons">
-						<button type="button" style="background:white; color:black; border:none;">
+					<form action="/RemoveClass" method="POST">
+						<button type="submit" name="Remove" value="<% out.print(cart.getOrder().get(i).getProduct().getName()); %>" style="background:white; color:black; border:none;">
 					      <span class="glyphicon glyphicon-remove" style="color:#551A8B"></span>
 					    </button> 
+					    </form>
 					</div>
 
 					<div class="image">
-						<img src="images/french/6.jpg" alt="" /> <!-- TREBUIE LUATA SI IMAGINEA DIN BAZA DE DATE --> 
+						<img src="<%out.print(cart.getOrder().get(i).getProduct().getImg()); %>" alt="" /> <!-- TREBUIE LUATA SI IMAGINEA DIN BAZA DE DATE --> 
 					</div>
 
 					<div class="description">
-						<span>P1</span> <span><% out.print("French Cuisine"); %></span>
+						<span><% out.print(cart.getOrder().get(i).getProduct().getName()); %></span> <span><% out.print(cart.getOrder().get(i).getProduct().getKitchen()); %></span>
 					</div>
 
 					<div class="quantity">
-						<button class="plus-btn" type="button" name="button">
+					<form action="/PlusClass" method="POST">
+						<button class="plus-btn" name="Plus" value="<% out.print(cart.getOrder().get(i).getProduct().getName()); %>" type="submit" >
 							<span class="glyphicon glyphicon-plus" style="color:#551A8B"></span>
 						</button>
-						<input type="text" name="name" value="1">
-						<button class="minus-btn" type="button" name="button">
+					</form>
+						<input type="text" id = "<%out.print(cart.getOrder().get(i).getProduct().getName()); %>"name="name" value="<% out.print(cart.getOrder().get(i).getQuantity());%>">
+					<form action="/MinusClass" method="POST">	
+						<button class="minus-btn" name="Minus" value="<% out.print(cart.getOrder().get(i).getProduct().getName()); %>" type="submit">
 							<span class="glyphicon glyphicon-minus" style="color:#551A8B"></span>
 						</button>
+					</form>
 					</div>
 
-					<div class="total-price"><% out.print("$24.99"); %></div>
+					<div class="total-price"><% out.print(cart.getOrder().get(i).getProduct().getPrice()); %></div>
 					
 				</div>
 				
@@ -122,13 +131,13 @@
 					}
 				%>
 				<br/>
-				<% if(x!=0){ %>
+				
 				<p style="text-align:right; font-size:16px; font-family:Montserrat; font-style:italic;">
-					TOTAL : $24.99 &nbsp; &nbsp;
+					TOTAL : <% out.print(cart.getTotalPrice());%> &nbsp; &nbsp;
 				</p>
-				<% } else{ %>
 				<br/>
 				<br/>
+				<%}else{ %>
 				<h2
 					style="font-family: Montsserrat; font-style: italic; font-size: 1.6em;">YOUR SHOPPING
 					CART IS EMPTY!</h2>
@@ -137,41 +146,6 @@
 		</div>
 
 	</div>
-	
-	<script>
-			
-			$('.minus-btn').on('click', function(e) {
-			    //e.preventDefault();
-			    var $this = $(this);
-			    var $input = $this.closest('div').find('input');
-			    var value = parseInt($input.val());
-			 
-			    if (value > 1) {
-			        value = value - 1;
-			    } else {
-			        value = 0;
-			    }
-			 
-			  $input.val(value);
-			 
-			});
-			 
-			$('.plus-btn').on('click', function(e) {
-			    //e.preventDefault();
-			    var $this = $(this);
-			    var $input = $this.closest('div').find('input');
-			    var value = parseInt($input.val());
-			 
-			    if (value < 100) {
-			        value = value + 1;
-			    } else {
-			        value =100;
-			    }
-			 
-			    $input.val(value);
-			});
-	
-	</script>
 
 	<!-- FOOTER TI PROIECT 2018 -->
 	<footer class="container-fluid text-center">
