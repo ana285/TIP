@@ -133,7 +133,7 @@ function afisareDetaliiProduse(id){
 	var modal = document.getElementById('myModal' + id);
 	var btn = document.getElementById('myBtn'+id);
 	var span = document.getElementsByClassName('close')[id];
-	
+	var ok=false;
 	
 	btn.onclick = function() {
 		modal.style.display = "block";
@@ -142,12 +142,41 @@ function afisareDetaliiProduse(id){
 	console.log('da');
 	span.onclick = function() {
 		modal.style.display = "none";
+		ok=true;
 	}
 	
 	console.log('daa');
 	window.onclick = function(event) {
+		if(ok==false)
+			modal.style.display="block";
 		if (event.target == modal) {
 			modal.style.display = "none";
 		}
+	}
+}
+
+function afisareDetaliiComanda(){
+	
+	var modal = document.getElementById('myModal');
+	var btn = document.getElementById("btn");
+	var span = document.getElementsByClassName("close")[0];
+	console.log('da');
+	var ok = false;
+
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+
+	span.onclick = function() {
+	    modal.style.display = "none";
+	    ok=true;
+	}
+
+	window.onclick = function(event) {
+		if(ok==false)
+			modal.style.display="block";
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
 	}
 }

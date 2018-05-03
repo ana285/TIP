@@ -19,6 +19,16 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
+<style>
+
+	p {
+		font-size: 1.3em;
+		font-family: "Montserrat";
+		text-align: center;
+		font-style: italic;
+	}
+
+</style>
 </head>
 
 <body>
@@ -44,36 +54,38 @@
 					<li class="drodown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">My Account <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<% 
-						
-						if(session.getAttribute("email") == null){
-						%>
+							<%
+								if (session.getAttribute("email") == null) {
+							%>
 							<li><a href="register.jsp"><span
 									class="glyphicon glyphicon-user"></span> &nbsp; Sign Up </a></li>
 							<li><a href="login.jsp"><span
 									class="glyphicon glyphicon-log-in"></span> &nbsp; Log In</a></li>
-							<%}
-						else
-						{
-							session.setAttribute("page", "mycart.jsp");
+							<%
+								} else {
+									session.setAttribute("page", "mycart.jsp");
 							%>
 							<li><a href="mycart.jsp"><span
-									class="glyphicon glyphicon-shopping-cart" data-count="
+									class="glyphicon glyphicon-shopping-cart"
+									data-count="
 									<%Cart cart = (Cart) session.getAttribute("cart");
-											if(cart != null){
-												int y=0;
-												int x = cart.getOrder().size();
-												for(int i=0;i<x;++i){
-													y+=cart.getOrder().get(i).getQuantity();
-												}
-												out.println(y);
-												}%>"></span>
+				if (cart != null) {
+					int y = 0;
+					int x = cart.getOrder().size();
+					for (int i = 0; i < x; ++i) {
+						y += cart.getOrder().get(i).getQuantity();
+					}
+					out.println(y);
+				} else out.println(0);
+				%>"></span>
 									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
 							<li><a href="logout.jsp"><span
 									class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out </a></li>
-							<%} %>
+							<%
+								}
+							%>
 						</ul></li>
 				</ul>
 			</div>
@@ -89,71 +101,127 @@
 				<h2
 					style="font-family: Montsserrat; font-style: italic; font-size: 2.3em;">SHOPPING
 					CART</h2>
-				<br />
-				<br />
+				<br /> <br />
 
 				<%
-					
 					Cart cart = (Cart) session.getAttribute("cart");
-				if(cart != null){
-					int x = cart.getOrder().size();
-					for(int i=0;i<x;++i){
+					if(cart == null)
+					{ %>
+					<h2 style='font-family: Montsserrat; font-style: italic; font-size: 1.6em;'>YOUR SHOPPING CART IS EMPTY! </h2>
+					<% }
+					if (cart != null) {
+						int x = cart.getOrder().size();
+						for (int i = 0; i < x; ++i) {
 				%>
-				
+
 				<!-- Product -->
 				<div class="items">
 					<div class="buttons">
-					<form action="/RemoveClass" method="POST">
-						<button type="submit" name="Remove" value="<% out.print(cart.getOrder().get(i).getProduct().getName()); %>" style="background:white; color:black; border:none;">
-					      <span class="glyphicon glyphicon-remove" style="color:#551A8B"></span>
-					    </button> 
-					    </form>
+						<form action="/RemoveClass" method="POST">
+							<button type="submit" name="Remove"
+								value="<%out.print(cart.getOrder().get(i).getProduct().getName());%>"
+								style="background: white; color: black; border: none;">
+								<span class="glyphicon glyphicon-remove" style="color: #551A8B"></span>
+							</button>
+						</form>
 					</div>
 
 					<div class="image">
-						<img src="<%out.print(cart.getOrder().get(i).getProduct().getImg()); %>" alt="" /> <!-- TREBUIE LUATA SI IMAGINEA DIN BAZA DE DATE --> 
+						<img
+							src="<%out.print(cart.getOrder().get(i).getProduct().getImg());%>"
+							alt="" />
+						<!-- TREBUIE LUATA SI IMAGINEA DIN BAZA DE DATE -->
 					</div>
 
 					<div class="description">
-						<span><% out.print(cart.getOrder().get(i).getProduct().getName()); %></span> <span><% out.print(cart.getOrder().get(i).getProduct().getKitchen()); %></span>
+						<span>
+							<%
+								out.print(cart.getOrder().get(i).getProduct().getName());
+							%>
+						</span> <span>
+							<%
+								out.print(cart.getOrder().get(i).getProduct().getKitchen());
+							%>
+						</span>
 					</div>
 
 					<div class="quantity">
-					<form action="/PlusClass" method="POST">
-						<button class="plus-btn" name="Plus" value="<% out.print(cart.getOrder().get(i).getProduct().getName()); %>" type="submit" >
-							<span class="glyphicon glyphicon-plus" style="color:#551A8B"></span>
-						</button>
-					</form>
-						<input type="text" id = "<%out.print(cart.getOrder().get(i).getProduct().getName()); %>"name="name" value="<% out.print(cart.getOrder().get(i).getQuantity());%>">
-					<form action="/MinusClass" method="POST">	
-						<button class="minus-btn" name="Minus" value="<% out.print(cart.getOrder().get(i).getProduct().getName()); %>" type="submit">
-							<span class="glyphicon glyphicon-minus" style="color:#551A8B"></span>
-						</button>
-					</form>
+						<form action="/PlusClass" method="POST" style="display: inline;">
+							<button class="plus-btn" name="Plus"
+								value="<%out.print(cart.getOrder().get(i).getProduct().getName());%>"
+								type="submit">
+								<span class="glyphicon glyphicon-plus" style="color: #551A8B"></span>
+							</button>
+						</form>
+						<input type="text" style="display: inline;"
+							id="<%out.print(cart.getOrder().get(i).getProduct().getName());%>"
+							name="name"
+							value="<%out.print(cart.getOrder().get(i).getQuantity());%>">
+						<form action="/MinusClass" method="POST" style="display: inline;">
+							<button class="minus-btn" name="Minus"
+								value="<%out.print(cart.getOrder().get(i).getProduct().getName());%>"
+								type="submit">
+								<span class="glyphicon glyphicon-minus" style="color: #551A8B"></span>
+							</button>
+						</form>
 					</div>
 
-					<div class="total-price"><% out.print(cart.getOrder().get(i).getProduct().getPrice()); %></div>
-					
+					<div class="total-price">
+						<%
+							out.print(cart.getOrder().get(i).getProduct().getPrice());
+						%>$
+					</div>
+
 				</div>
-				
+
 				<%
 					}
 				%>
-				<br/>
-				
-				<p style="text-align:right; font-size:16px; font-family:Montserrat; font-style:italic;">
-					TOTAL : <% out.print(cart.getTotalPrice());%> &nbsp; &nbsp;
+				<br />
+				<br />
+				<%
+					if (x != 0) {
+				%>
+				<br />
+				&nbsp;
+				<p
+					style="margin:0 auto; font-size: 20px; font-family: Montserrat; font-style: italic;">
+					&nbsp; &nbsp; TOTAL :
+					<%
+					out.print(cart.getTotalPrice());
+				%>$ &nbsp; &nbsp;
 				</p>
+				<br />
+				<button name="btn" id="btn" onclick="afisareDetaliiComanda();" class="btn3" style="margin: 0 auto; text-align:center">Command</button>
+				&nbsp;
 				<br/>
-				<br/>
-				<%}else{ %>
-				<h2
-					style="font-family: Montsserrat; font-style: italic; font-size: 1.6em;">YOUR SHOPPING
-					CART IS EMPTY!</h2>
-				<% } %>
+				<div id="myModal" class="modal">
+				  <div class="modal-content">
+				    <span class="close">&times;</span>
+				    <p style="text-transform: uppercase; font-size:20px;">Thank you for your order.</p><p class="like-btn"></p>
+				    <p>Please enjoy the Revenue's kitchens until the order arrives! </p>
+				    
+				    <p>Total : <% out.print(cart.getTotalPrice()); %>$ </p>
+				    <script>
+				    	$('.like-btn').on('click', function() {
+					    	   $(this).toggleClass('is-active');
+					    	});
+				    </script>
+				  </div>
+				</div>
+				<br />
+				<%
+					} else {
+				%>
+				
+				<h2 style='font-family: Montsserrat; font-style: italic; font-size: 1.6em;'>YOUR SHOPPING CART IS EMPTY! </h2>
+				
+				<%		
+						}
+					}
+				%>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- FOOTER TI PROIECT 2018 -->
