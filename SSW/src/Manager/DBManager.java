@@ -232,4 +232,54 @@ public class DBManager {
 		return pr;
 	}
 
+	
+	public boolean checkLoginInfoApp(User user, String password){
+		try{
+			String query = "select * from user";
+			rs = st.executeQuery(query);
+			while(rs.next()){
+				
+				String dbPassword = rs.getString("password");
+				String dbEmail = rs.getString("email");
+				
+				System.out.println(user.getEmail() + " " + dbEmail);				
+				System.out.println(password + " " + dbPassword);
+				
+				if(user.getEmail().equals(dbEmail) && password.equals(dbPassword))
+				{	
+					return true;
+				}
+			}
+
+		}catch (Exception ex){
+			System.out.println(ex);
+		}
+		return false;
+	}
+	
+	public User getUserInfoApp(int id)
+	{
+		try {
+			rs = st.executeQuery("select * from user where id = " + id + ";");
+			while (rs.next())
+			{
+				User user = new User();
+				user.setEmail(rs.getString("email"));
+				user.setName(rs.getString("name"));
+				user.setId(rs.getInt("id"));
+				user.setTelephone(rs.getString("telephone"));
+				user.setAddress1(rs.getString("address1"));
+				user.setAddress2(rs.getString("address2"));
+				
+				return user;
+			}
+			return null;
+		} catch (Exception ex)
+		{
+			System.out.println(ex);
+			return null;
+		}
+	}
+
+
 }
