@@ -1483,6 +1483,10 @@ public class MexicanKitchenLogged extends javax.swing.JFrame {
         CartMenuItem.setText("MY CART");
         CartMenuItem.setOpaque(true);
         CartMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CartMenuItemMouseClicked(evt);
+            }
+                
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CartMenuItemMouseEntered(evt);
             }
@@ -1676,6 +1680,7 @@ public class MexicanKitchenLogged extends javax.swing.JFrame {
         // TODO add your handling code here:
         new LoginPageApp().setVisible(true);
         login.Login.putLoggedUserId(-1);
+        login.Login.clearCart();
         this.setVisible(false);
     }//GEN-LAST:event_LogOutMenuItemMouseClicked
 
@@ -1803,6 +1808,12 @@ public class MexicanKitchenLogged extends javax.swing.JFrame {
         HomeMenuItem.setBackground(new Color(255,50,50));
         HomeMenuItem.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_HomeMenuItemMouseExited
+    
+    private void CartMenuItemMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        // TODO add your handling code here:
+    	new MyCartPage().setVisible(true);
+    	this.setVisible(false);
+    }  
 
     /**
      * @param args the command line arguments

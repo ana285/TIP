@@ -4,29 +4,10 @@
  * and open the template in the editor.
  */
 package login;
-import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
+import data.Product;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-
-import org.glassfish.jersey.client.ClientConfig;
-import org.glassfish.jersey.client.HttpUrlConnectorProvider;
-
-import data.Encrypt;
-import data.User;
 /**
  *
  * @author Sabina
@@ -34,11 +15,21 @@ import data.User;
 public class Login {
 	
 	private static int userID = -1;
-	//private static ArrayList<String> GreekImages;
-	/*static {
-		GreekImages = new ArrayList<String>();
-		
-	}*/
+	public static List<Product> GreekKitchen;
+	public static List<Product> FrenchKitchen;
+	public static List<Product> ItalianKitchen;
+	public static List<Product> MexicanKitchen;
+	
+    public static List<Product> MyCart;
+    private static Product currentProduct = new Product();
+	
+	static {
+		FrenchKitchen = servicii.web.ProductServiceApp.getProducts("french");
+		GreekKitchen = servicii.web.ProductServiceApp.getProducts("greek");
+		ItalianKitchen = servicii.web.ProductServiceApp.getProducts("italian");
+		MexicanKitchen = servicii.web.ProductServiceApp.getProducts("mexican");
+        MyCart = new ArrayList<>();
+	}
 	  
 	public static int getLoggedUserId()
 	{
@@ -49,11 +40,47 @@ public class Login {
 	{
 	   userID = ID;
 	}
+	
+    public static void addInCart(Product prod)
+    {
+        MyCart.add(prod);
+        System.out.println(MyCart.get(MyCart.size()-1).getName());
+    }
+    
+    public static void removeFromCart(int id)
+    {
+    	MyCart.remove(id);
+    }
+    
+    public static void clearCart()
+    {
+    	MyCart.clear();
+    }
+    
+    public static double getTotalPrice()
+    {
+    	double s = 0;
+    	for(int i = 0; i < MyCart.size(); i++)
+    	{
+    		s += MyCart.get(i).getPrice();
+    	}
+    	return s;
+    }
+    
+    public static void putCurrentProduct(Product p)
+    {
+    	currentProduct.setImg(p.getImg());
+    	currentProduct.setName(p.getName());
+    	currentProduct.setIngredients(p.getIngredients());
+    }
+    
+    public static Product getCurrentProduct()
+    {
+    	return currentProduct;
+    }
 	   
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
         
     }
     
