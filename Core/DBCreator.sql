@@ -40,7 +40,7 @@ CREATE TABLE Delivery_people (
 CREATE TABLE Orders( 
 	id int NOT NULL AUTO_INCREMENT, 
 	id_user int NOT NULL, 
-	id_delivery int NOT NULL, 
+	id_delivery int, 
 	price DOUBLE(10,4) NOT NULL,
 	CONSTRAINT orders_id_pk PRIMARY KEY(id),
 	CONSTRAINT orders_id_user_fk FOREIGN KEY(id_user) REFERENCES user(id),
@@ -166,7 +166,7 @@ CREATE TABLE Order_food(
 	id int NOT NULL AUTO_INCREMENT, 
 	id_food int NOT NULL, 
 	id_order int NOT NULL, 
-	id_chef int NOT NULL, 
+	id_chef int, 
 	amount DOUBLE(10,4) NOT NULL, 
 	quantity NUMERIC(5) NOT NULL,
 	CONSTRAINT order_food_id_pk PRIMARY KEY(id),

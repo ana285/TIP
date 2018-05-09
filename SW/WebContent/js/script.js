@@ -180,3 +180,7 @@ function afisareDetaliiComanda(){
 	    }
 	}
 }
+
+function Alert() {
+    alert("We do not have enough ingredients for this food!");
+}

@@ -67,8 +67,10 @@ public class PlusClass extends HttpServlet {
 
 		Cart cart = (Cart) session.getAttribute("cart");
 		System.out.println("Bine");
-		cart.AddProduct(cart.getOrderProduct(name).getProduct());
+		boolean added = cart.AddProduct(cart.getOrderProduct(name).getProduct());
 
+		session.setAttribute("empty", added);
+		System.out.println("Sesiune empty:"+session.getAttribute("empty"));
 		session.setAttribute("cart", cart);
 		System.out.println("Bine 2");
 

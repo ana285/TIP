@@ -179,7 +179,16 @@
 			id="Drinks">Drinks</h3>
 		<hr>
 		<div id="Drinks_div"></div>
-
+		<%
+if (session.getAttribute("empty") != null && (boolean)session.getAttribute("empty") == false ) {
+				%>
+				<script>
+					Alert();
+				</script>
+				<%
+				session.removeAttribute( "empty" );
+					}
+				%>
 		<% if( session.getAttribute("email") == null)
 			{
 			

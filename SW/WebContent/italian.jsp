@@ -180,6 +180,16 @@ pageEncoding="ISO-8859-1" session="true" import="data.Cart"%>
 		<div id="Drinks_div">
 
 		</div>
+		
+		<%if (session.getAttribute("empty") != null && (boolean)session.getAttribute("empty") == false ) {
+			%>
+			<script>
+				Alert();
+			</script>
+			<%
+			session.removeAttribute( "empty" );
+				}
+			%>
 		<% if( session.getAttribute("email") == null)
 			{
 			

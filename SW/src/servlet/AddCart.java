@@ -60,7 +60,7 @@ public class AddCart extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("SERVLET Cart:)");
+		System.out.println("AddCart:doPost: Servlet called");
 		String name = request.getParameter("AddButton");
 
 		ClientConfig config = new ClientConfig();
@@ -90,8 +90,9 @@ public class AddCart extends HttpServlet {
 			if(cart == null) {
 				cart = new Cart();
 			}
-			cart.AddProduct(prod);
-			System.out.println("Bine");
+			boolean added = cart.AddProduct(prod);
+			System.out.println("Produs adaugat in cart");
+			session.setAttribute("empty", added);
 			session.setAttribute("cart", cart);
 			System.out.println("Bine 2");
 			

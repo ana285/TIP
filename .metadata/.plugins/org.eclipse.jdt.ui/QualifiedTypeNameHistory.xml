@@ -43,6 +43,8 @@
 <fullyQualifiedTypeName name="data.SessionUser"/>
 <fullyQualifiedTypeName name="data.Product"/>
 <fullyQualifiedTypeName name="data.ProductDeserializer"/>
-<fullyQualifiedTypeName name="data.OrderProduct"/>
 <fullyQualifiedTypeName name="data.Cart"/>
+<fullyQualifiedTypeName name="data.OrderUser"/>
+<fullyQualifiedTypeName name="data.Ingredient"/>
+<fullyQualifiedTypeName name="data.OrderProduct"/>
 </qualifiedTypeNameHistroy>

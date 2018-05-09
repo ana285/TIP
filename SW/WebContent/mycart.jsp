@@ -20,14 +20,12 @@
 <link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
 <style>
-
-	p {
-		font-size: 1.3em;
-		font-family: "Montserrat";
-		text-align: center;
-		font-style: italic;
-	}
-
+p {
+	font-size: 1.3em;
+	font-family: "Montserrat";
+	text-align: center;
+	font-style: italic;
+}
 </style>
 </head>
 
@@ -76,8 +74,8 @@
 						y += cart.getOrder().get(i).getQuantity();
 					}
 					out.println(y);
-				} else out.println(0);
-				%>"></span>
+				} else
+					out.println(0);%>"></span>
 									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
@@ -105,15 +103,20 @@
 
 				<%
 					Cart cart = (Cart) session.getAttribute("cart");
-					if(cart == null)
-					{ %>
-					<h2 style='font-family: Montsserrat; font-style: italic; font-size: 1.6em;'>YOUR SHOPPING CART IS EMPTY! </h2>
-					<% }
-					if (cart != null) {
+					if (cart != null && cart.getOrder().size() != 0) {
 						int x = cart.getOrder().size();
 						for (int i = 0; i < x; ++i) {
-				%>
 
+					
+					if (session.getAttribute("empty") != null && (boolean)session.getAttribute("empty") == false ) {
+				%>
+				<script>
+					Alert();
+				</script>
+				<%
+				session.removeAttribute( "empty" );
+					}
+				%>
 				<!-- Product -->
 				<div class="items">
 					<div class="buttons">
@@ -134,14 +137,12 @@
 					</div>
 
 					<div class="description">
-						<span>
-							<%
-								out.print(cart.getOrder().get(i).getProduct().getName());
-							%>
-						</span> <span>
-							<%
-								out.print(cart.getOrder().get(i).getProduct().getKitchen());
-							%>
+						<span> <%
+ 	out.print(cart.getOrder().get(i).getProduct().getName());
+ %>
+						</span> <span> <%
+ 	out.print(cart.getOrder().get(i).getProduct().getKitchen());
+ %>
 						</span>
 					</div>
 
@@ -177,51 +178,55 @@
 				<%
 					}
 				%>
-				<br />
-				<br />
-				<%
-					if (x != 0) {
-				%>
-				<br />
-				&nbsp;
+				<br /> <br /> <br />
+
 				<p
-					style="margin:0 auto; font-size: 20px; font-family: Montserrat; font-style: italic;">
-					&nbsp; &nbsp; TOTAL :
+					style="text-align: right; font-size: 16px; font-family: Montserrat; font-style: italic;">
+					TOTAL :
 					<%
 					out.print(cart.getTotalPrice());
-				%>$ &nbsp; &nbsp;
+				%>
+					&nbsp; &nbsp;
 				</p>
 				<br />
-				<button name="btn" id="btn" onclick="afisareDetaliiComanda();" class="btn3" style="margin: 0 auto; text-align:center">Command</button>
-				&nbsp;
-				<br/>
-				<div id="myModal" class="modal">
-				  <div class="modal-content">
-				    <span class="close">&times;</span>
-				    <p style="text-transform: uppercase; font-size:20px;">Thank you for your order.</p><p class="like-btn"></p>
-				    <p>Please enjoy the Revenue's kitchens until the order arrives! </p>
-				    
-				    <p>Total : <% out.print(cart.getTotalPrice()); %>$ </p>
-				    <script>
-				    	$('.like-btn').on('click', function() {
-					    	   $(this).toggleClass('is-active');
-					    	});
-				    </script>
-				  </div>
-				</div>
+				<form action="postOrder" method="POST">
+					<button name="btn" id="btn" onclick="afisareDetaliiComanda();"
+						class="btn3" style="margin: 0 auto; text-align: center">Command</button>
+					&nbsp; <br />
+				</form>
 				<br />
 				<%
 					} else {
+						String mesaj = (String) session.getAttribute("mesajCart");
+						if (mesaj != null && mesaj != "") {
 				%>
-				
-				<h2 style='font-family: Montsserrat; font-style: italic; font-size: 1.6em;'>YOUR SHOPPING CART IS EMPTY! </h2>
-				
-				<%		
-						}
+				<h2
+					style="font-family: Montsserrat; font-style: italic; font-size: 1.6em;">
+					<%
+						out.print(mesaj);
+					%>
+				</h2>
+				<%
+					} else {
+				%>
+				<h2
+					style="font-family: Montsserrat; font-style: italic; font-size: 1.6em;">YOUR
+					SHOPPING CART IS EMPTY!</h2>
+				<%
+					}
 					}
 				%>
 			</div>
 		</div>
+
+		<%
+			if (session.getAttribute("email") == null) {
+				session.setAttribute("page", "login.jsp");
+			} else {
+				session.setAttribute("page", "mycart.jsp");
+			}
+		%>
+
 	</div>
 
 	<!-- FOOTER TI PROIECT 2018 -->
