@@ -1,9 +1,4 @@
-INDEX VERSION 1.4+D:\Facultate\Anul III\Semestrul II\TIP\Restaurant_rep\TIP\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2016646659.index
+INDEX VERSION 1.4+C:\Users\catalin\AppData\Roaming\SPB_16.6\git\TIP_FINAL\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 2868655407.index
-179428296.index
-3774848628.index
-564440319.index
-908846133.index
 4269720582.index
-3057596396.index
+564440319.index

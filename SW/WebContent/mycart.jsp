@@ -20,12 +20,28 @@
 <link rel="icon" href="images/logo.ico" type="image/x-icon">
 <script src="js/script.js"></script>
 <style>
-p {
-	font-size: 1.3em;
-	font-family: "Montserrat";
-	text-align: center;
-	font-style: italic;
-}
+	p {
+		font-size: 1.3em;
+		font-family: "Montserrat";
+		text-align: center;
+		font-style: italic;
+	}
+	
+	@media (max-width:800px){		
+		
+		.btn3
+		{
+			width:90px;
+			font-size:13px;
+			float: center;
+		}
+		
+		.image{
+			margin-right: 25px;
+			
+		}
+	}
+	
 </style>
 </head>
 
@@ -181,12 +197,12 @@ p {
 				<br /> <br /> <br />
 
 				<p
-					style="text-align: right; font-size: 16px; font-family: Montserrat; font-style: italic;">
+					style="text-align: right; font-size: 18px; font-family: Montserrat; font-style: italic;">
 					TOTAL :
 					<%
 					out.print(cart.getTotalPrice());
 				%>
-					&nbsp; &nbsp;
+					$&nbsp; &nbsp;
 				</p>
 				<br />
 				<form action="postOrder" method="POST">

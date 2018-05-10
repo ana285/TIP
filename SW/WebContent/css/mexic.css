@@ -11,6 +11,85 @@
 	color: black;
 }
 
+@media ( max-width :812px) {
+	.modal {
+		display: none;
+		position: fixed;
+		padding-top: 20px;
+		left: 0.5%;
+		top: -1px;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+	.container5 {
+		width: 100%;
+		height: 300px;
+	}
+	.container5 .right p {
+		font-size: 12px;
+	}
+	.nameP {
+		font-family: Montsserrat;
+		text-align: center;
+		font-style: italic;
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+	
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+		color: #FFF;
+	}
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+		color: #FF3232;
+		background-color: white;
+	}
+}
+
+.nameP {
+	font-family: Montsserrat;
+	text-align: center;
+	font-style: italic;
+	font-size: 1.7em;
+}
+
+
+@media ( max-width : 767px) {
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+		color: #FFF;
+	}
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+		color: #FF3232;
+		background-color: white;
+	}
+}
+
+@media ( max-width :400px) {
+	.modal {
+		display: none;
+		position: fixed;
+		padding-top: 100px;
+		left: 0.5%;
+		top: -15px;
+		width: 100%;
+		height: 80%;
+		overflow: auto;
+	}
+	.container5 {
+		width: 100%;
+		height: 300px;
+	}
+	.container5 .right p {
+		font-size: 12px;
+	}
+	.nameP {
+		font-family: Montsserrat;
+		text-align: center;
+		font-style: italic;
+		font-size: 1.0em;
+		font-weight: bold;
+	}
+}
 
 .navbar-brand {
 	float: left;
@@ -24,7 +103,7 @@
 	color: white;
 }
 
-.mesaj2{
+.mesaj2 {
 	font-family: "Montserrat", sans-serif;
 	font-variant: small-caps;
 	text-transform: uppercase;
@@ -58,27 +137,32 @@
 	color: white;
 }
 
-
 .navbar-inverse .navbar-nav li a:hover {
 	background-color: white;
 	color: #FF3232;
 }
 
-@-webkit-keyframes slide 
-{ 
-	0% {
+@
+-webkit-keyframes slide { 0% {
 	opacity: 0;
 	-webkit-transform: translateY(70%);
-	}
-
-	100%
-	{
-	opacity: 1;
-	-webkit-transform: 
-	translateY (0%);
-	}
 }
 
+100%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+	
+translateY
+ 
+(0%);
+}
+}
 #h1 {
 	border-style: solid;
 	background-color: #551A8B;
@@ -157,11 +241,9 @@ label {
 	#icon {
 		max-width: 0px;
 	}
-	
 	#icon3 {
 		max-width: 350px;
 	}
-	
 	h4 {
 		font-size: 1.7em;
 	}
@@ -195,7 +277,6 @@ label {
 	#icon {
 		max-width: 0px;
 	}
-	
 	#icon3 {
 		max-width: 250px;
 	}
@@ -211,7 +292,6 @@ label {
 	#icon {
 		max-width: 0px;
 	}
-	
 	#icon3 {
 		max-width: 250px;
 	}
@@ -224,22 +304,22 @@ label {
 }
 
 .modal {
-    display: none; 
-    position: fixed; 
-    padding-top: 100px; 
-    left: 15%;
-    top: -25px;
-    width: 70%; 
-    height: 100%; 
-    overflow: auto; 
+	display: none;
+	position: fixed;
+	padding-top: 100px;
+	left: 15%;
+	top: -25px;
+	width: 70%;
+	height: 100%;
+	overflow: auto;
 }
 
-.glyphicon[data-count]:after{
-	position:absolute;
+.glyphicon[data-count]:after {
+	position: absolute;
 	top: -14px;
 	left: 8px;
 	content: attr(data-count);
-	font-size:62%;
+	font-size: 62%;
 	padding: .65em;
 	border-radius: 100px;
 	line-height: .65em;
@@ -251,35 +331,48 @@ label {
 	border: 1px solid #FF3232;
 }
 
-
-.glyphicon{
-	font-size:17px;
+.glyphicon {
+	font-size: 17px;
 }
 
 .modal-content {
-    position: relative;
-    background-color: #FFF;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+	position: relative;
+	background-color: #FFF;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	width: 80%;
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s
 }
 
 /* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
+@
+-webkit-keyframes animatetop {
+	from {top: -300px;
+	opacity: 0
 }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+to {
+	top: 0;
+	opacity: 1
 }
 
+}
+@
+keyframes animatetop {
+	from {top: -300px;
+	opacity: 0
+}
+
+to {
+	top: 0;
+	opacity: 1
+}
+
+}
 p {
 	font-size: 1.3em;
 	font-family: "Montserrat";
@@ -287,33 +380,33 @@ p {
 	font-style: italic;
 }
 
-
 .close {
-    color: #000;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+	color: #000;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #FFF;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: #FFF;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .modal-header {
-    padding: 2px 16px;
-    background-color: #FF3232;
-    color: white;
+	padding: 2px 16px;
+	background-color: #FF3232;
+	color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+	padding: 2px 16px;
+}
 
 .modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+	padding: 2px 16px;
+	background-color: #5cb85c;
+	color: white;
 }
 
 .container5 {
@@ -321,50 +414,50 @@ p {
 	height: 500px;
 }
 
-.container5 .left{
+.container5 .left {
 	float: left;
 	width: 50%;
 	height: 499px;
-	background: url(../images/1.png);
+	/*background: url(../images/1.png);*/
 	background-size: cover;
 	background-position: center;
 }
 
-.btn3{
+.btn3 {
 	font-size: 14px;
 	color: #fff;
 	font-family: "Montserrat", sans-serif;
 	font-variant: small-caps;
 	padding: 8px 22px;
 	background: #FF3232;
-	border: 2px solid #FFF;
+	border: 1px solid #FFF;
 	border-radius: 7px;
 }
 
-.btn3:hover{
+.btn3:hover {
 	background-color: #FFF;
 	color: #FF3232;
 	border: 1px solid #FF3232;
 }
 
-.btnAdd{
+.btnAdd {
 	font-size: 14px;
 	color: #fff;
 	font-family: "Montserrat", sans-serif;
 	font-variant: small-caps;
 	padding: 8px 22px;
 	background: #FF3232;
-	border: 2px solid #FFF;
+	border: 1px solid #FFF;
 	border-radius: 7px;
 }
 
-.btnAdd:hover{
+.btnAdd:hover {
 	background-color: #FFF;
 	color: #FF3232;
 	border: 1px solid #FF3232;
 }
 
-.container5 .right{
+.container5 .right {
 	float: right;
 	width: 50%;
 	height: 500px;
@@ -373,7 +466,7 @@ p {
 	font-style: italic;
 }
 
-#more{
+#more {
 	width: 80%;
 	margin-top: 20%;
 	margin-left: 10%;

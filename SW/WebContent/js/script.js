@@ -42,7 +42,7 @@ function loadKitchen(kitchen){
 								'</div>'+
 								'<div class="right">'+
 									'<br />'+
-									'<p style="font-family: Montsserrat; text-align: center; font-style: italic; font-size: 1.7em;">'+
+									'<p class="nameP">'+
 									raspuns[i].name+'</p>'+
 									'<br /> <br />'+
 									'<p>&nbsp; Ingredients:</p>'+

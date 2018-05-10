@@ -100,7 +100,7 @@
 
 
 				<fieldset>
-
+					
 					<label class="align1" for="VEmail">Email</label>
 					<div>
 						<input type="email" class="form-control" name="VEmail" id="VEmail"
@@ -128,8 +128,6 @@
 					</div>
 
 				</fieldset>
-
-
 
 
 			</div>

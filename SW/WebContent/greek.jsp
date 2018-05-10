@@ -66,7 +66,7 @@ pageEncoding="ISO-8859-1" session="true" import="data.Cart"%>
 							<% }
 								else
 							{ %>
-							<li><a href=""><span
+							<li><a href="mycart.jsp"><span
 									class="glyphicon glyphicon-shopping-cart" data-count="
 									<%Cart cart = (Cart) session.getAttribute("cart");
 											if(cart != null){

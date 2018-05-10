@@ -11,6 +11,16 @@
 	color: black;
 }
 
+@media (max-width: 767px){
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+	    color: #FFF;
+		}
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+    	color: #551A8B;
+    	background-color:white;
+		}
+}
+
 .glyphicon[data-count]:after{
 	position:absolute;
 	top: -14px;

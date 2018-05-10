@@ -57,7 +57,7 @@ public class LoginUser extends HttpServlet {
 	}
 	private static URI getBaseURI() {
 		//TODO change the port to whatever is the server running on
-		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+		return UriBuilder.fromUri("http://localhost:8080/SSW/").build();
 	}
 
 	/**

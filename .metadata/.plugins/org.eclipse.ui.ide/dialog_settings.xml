@@ -5,6 +5,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\catalin\AppData\Roaming\SPB_16.6\git\TIP_FINAL"/>
 			<item value="D:\Facultate\Anul III\Semestrul II\TIP\Restaurant_rep\TIP"/>
 			<item value="D:\Restaurant\SW"/>
 			<item value="D:\SW"/>
