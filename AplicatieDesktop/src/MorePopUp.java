@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import data.Ingredient;
 import data.Product;
 
 /*
@@ -55,7 +56,7 @@ public class MorePopUp extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel3.setPreferredSize(new java.awt.Dimension(200, 25));
         
-        ArrayList<String> ingredients = login.Login.getCurrentProduct().getIngredients();
+        ArrayList<Ingredient> ingredients = login.Login.getCurrentProduct().getIngredients();
         String labelList = "<html>Ingredients: ";
         for(int i = 0; i < ingredients.size()-1; i++)
         {

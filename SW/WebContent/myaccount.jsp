@@ -54,17 +54,18 @@
 								} else {
 							%>
 							<li><a href="mycart.jsp"><span
-									class="glyphicon glyphicon-shopping-cart" data-count="
+									class="glyphicon glyphicon-shopping-cart"
+									data-count="
 <%Cart cart = (Cart) session.getAttribute("cart");
-											if(cart != null){
-												int y=0;
-												int x = cart.getOrder().size();
-												for(int i=0;i<x;++i){
-													y+=cart.getOrder().get(i).getQuantity();
-												}
-												out.println(y);
-												}%>"></span> &nbsp; My
-									cart </a></li>
+				if (cart != null) {
+					int y = 0;
+					int x = cart.getOrder().size();
+					for (int i = 0; i < x; ++i) {
+						y += cart.getOrder().get(i).getQuantity();
+					}
+					out.println(y);
+				}%>"></span>
+									&nbsp; My cart </a></li>
 							<li><a href="myaccount.jsp"><span
 									class="glyphicon glyphicon-home"></span> &nbsp; My account </a></li>
 							<li><a href="logout.jsp"><span
@@ -94,10 +95,10 @@
 			CHECK YOUR DATA!</h4>
 		<hr>
 
+		<form action="ChangePwd" method="post">
+			<div class="align1 alignLeft12">
 
-		<div class="align1 alignLeft12">
 
-			<form>
 				<fieldset>
 
 					<label class="align1" for="VEmail">Email</label>
@@ -115,27 +116,27 @@
 					</div>
 
 
-					<br /> <label class="align1" for="VTelephone"
-						style="margin-left: 55%">Telephone</label>
+					<br /> <label class="align1" for="VTelephone">Telephone</label>
 					<div>
-						<input style="margin-left: 55%" type="text" class="form-control"
-							name="VTelephone" id="VTelephone"
+						<input type="text" class="form-control" name="VTelephone"
+							id="VTelephone"
 							value="<%System.out.println(session.getAttribute("telephone"));
-							if (session.getAttribute("telephone") != null){
-								out.println(session.getAttribute("telephone").toString());}%>"
+				if (session.getAttribute("telephone") != null) {
+					out.println(session.getAttribute("telephone").toString());
+				}%>"
 							readonly>
 					</div>
 
 				</fieldset>
-			</form>
 
 
 
-		</div>
 
-		<div class="align1 alignRight12">
+			</div>
 
-			<form>
+			<div class="align1 alignRight12">
+
+
 				<fieldset>
 
 
@@ -143,8 +144,9 @@
 					<div>
 						<input type="text" class="form-control" name="VAddress"
 							id="VAddress"
-							value="<%if (session.getAttribute("address1") != null){
-								out.println(session.getAttribute("address1").toString());}%>"
+							value="<%if (session.getAttribute("address1") != null) {
+					out.println(session.getAttribute("address1").toString());
+				}%>"
 							readonly>
 					</div>
 
@@ -153,16 +155,52 @@
 					<div>
 						<input type="text" class="form-control" name="VAddress2"
 							id="VAddress2"
-							value="<%if (session.getAttribute("address2") != null){
-								out.println(session.getAttribute("address2").toString());}%>"
+							value="<%if (session.getAttribute("address2") != null) {
+					out.println(session.getAttribute("address2").toString());
+				}%>"
 							readonly>
 					</div>
+					<br /><label class="align1">Old Password</label>
+					<div>
+						 <input type="password"
+							name="VOldPassword" id="VOldPassword" class="form-control"
+							placeholder="Old Password" required />
+					</div>
+					<br /><label class="align1">New Password</label>
+					<div>
+						 <input type="password"
+							name="VNewPassword" id="VNewPassword" class="form-control"
+							placeholder="New Password" required />
+					</div>
+					<br /><label class="align1">Repeat Password</label>
+					<div>
+						 <input
+							type="password" name="VRepPassword" id="VRepPassword"
+							class="form-control" placeholder="Repeat Password" required />
+					</div>
+
+					<div>
+						<br />
+						<button name="btn" id="btn" class="btn4"
+							style="margin: 0 auto; text-align: center" type="submit"
+							name="submit">Change now</button>
+					</div>
+					<!-- ERROR MESSAGE -->
+					<span id="mesaj"> <%
+ 	if (session.getAttribute("error_change") != null) {
+ 			out.println(session.getAttribute("error_change").toString());
+ 			session.setAttribute("error_change", "");
+ 		}
+ %>
+					</span>
+
 
 
 				</fieldset>
-			</form>
 
-		</div>
+
+			</div>
+		</form>
 		<%
 			} else {
 		%>

@@ -22,6 +22,7 @@ import data.OrderProduct;
 import data.OrderUser;
 import data.Product;
 import data.SessionUser;
+import data.UpdateUser;
 import data.User;
 
 
@@ -82,6 +83,46 @@ public class DBManager {
 		}
 		return false;
 	}
+	
+	public boolean checkLogin(UpdateUser user){
+		try{
+			System.out.println("Check");
+			String query = "select * from user";
+			rs = st.executeQuery(query);
+			while(rs.next()){
+				String dbPassword = rs.getString("password");
+				String dbEmail = rs.getString("email");
+				if(!user.getReppassword().equals(user.getNewpassword())) return false;
+				if(user.getEmail().equals(dbEmail) && user.getOldpassword().equals(dbPassword))
+				{
+					return true;
+				}
+			}
+
+		}catch (Exception ex){
+			System.out.println(ex);
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean setUserInfo(UpdateUser user) {
+		System.out.println(user.getNewpassword()+" "+user.getEmail());
+			String sql = "UPDATE user SET password = '"+user.getNewpassword()+"' WHERE email='"+user.getEmail()+"';";
+			
+			try {
+				Statement pstmt = con.createStatement();
+				pstmt.executeUpdate(sql);
+				return true;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return false;
+	}
+
+
 
 	public boolean isUserInDatabase(String email) {
 		try{

@@ -47,4 +47,5 @@
 <fullyQualifiedTypeName name="data.OrderUser"/>
 <fullyQualifiedTypeName name="data.Ingredient"/>
 <fullyQualifiedTypeName name="data.OrderProduct"/>
+<fullyQualifiedTypeName name="data.UpdateUser"/>
 </qualifiedTypeNameHistroy>

@@ -203,6 +203,24 @@ input:focus {
 	border: 1px solid #551A8B;
 }
 
+.btn4{
+	font-size: 14px;
+	color: #fff;
+	font-family: "Montserrat", sans-serif;
+	font-variant: small-caps;
+	padding: 8px 22px;
+	background: #551A8B;
+	border: 1px solid #FFF;
+	border-radius: 7px;
+	width: 50%;
+}
+
+.btn4:hover{
+	background-color: #FFF;
+	color: #551A8B;
+	border: 1px solid #551A8B;
+}
+
 .like-btn {
   display: inline-block;
   cursor: pointer;
