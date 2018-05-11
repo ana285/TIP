@@ -14,7 +14,7 @@ function loadKitchen(kitchen){
 	    		vect[i] = "<p>";
 	    		for(var j = 0; j < raspuns[i].ingredients.length;++j)
 	    			{
-	    				vect[i] += "&emsp;&emsp;&emsp;"+raspuns[i].ingredients[j] + "<br\>";
+	    				vect[i] += "&emsp;&emsp;&emsp;"+raspuns[i].ingredients[j].name + "<br\>";
 	    			}
 	    		vect[i] += "</p>";
 	    			console.log(vect[i]);
