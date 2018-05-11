@@ -99,8 +99,11 @@ public class AddUser extends HttpServlet {
 			
 			response = service.path("rest").path("register").request(MediaType.APPLICATION_XML).post(Entity.entity(user, MediaType.APPLICATION_XML), Response.class);
 			System.out.println(response.getStatus());
-			if(response.getStatus() == 201)
+			if(response.getStatus() == 201) {
+				TLSEmail.setEmail(email);
 				request.getRequestDispatcher("login.jsp").forward(request, resp);
+			}
+
 			else {
 				HttpSession session = request.getSession();
 				session.setAttribute("error", "This email already exists!");
