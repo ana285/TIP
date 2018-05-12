@@ -10,6 +10,8 @@
  */
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.event.MouseEvent;
+
 import data.User;
 import data.Encrypt;
 
@@ -80,12 +82,12 @@ public class LoginPageApp extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 EmailTextBoxMouseExited(evt);
             }
-        });
-        EmailTextBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailTextBoxActionPerformed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+            	EmailTextBoxMouseClicked(evt);
             }
         });
+
 
         label2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         label2.setForeground(new java.awt.Color(85, 26, 139));
@@ -100,6 +102,9 @@ public class LoginPageApp extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 PasswordTextBoxMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PasswordTextBoxMouseClicked(evt);
             }
         });
 
@@ -337,8 +342,17 @@ public class LoginPageApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EmailTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailTextBoxActionPerformed
+    protected void PasswordTextBoxMouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	PasswordTextBox.setText("");
+		
+	}
+
+	private void EmailTextBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmailTextBoxActionPerformed
         // TODO add your handling code here:
+    	EmailTextBox.setText("");
+    	
+    	
     }//GEN-LAST:event_EmailTextBoxActionPerformed
 
     private void EmailTextBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmailTextBoxMouseEntered

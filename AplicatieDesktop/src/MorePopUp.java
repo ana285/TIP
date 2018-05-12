@@ -62,10 +62,10 @@ public class MorePopUp extends javax.swing.JFrame {
         {
         	if(i==4 || i==7)
         		labelList += "<br>";
-        	labelList = labelList + ingredients.get(i) + ", ";
+        	labelList = labelList + ingredients.get(i).getName() + ", ";
         }
         
-        jLabel3.setText(labelList + ingredients.get(ingredients.size()-1) + ".</html>");
+        jLabel3.setText(labelList + ingredients.get(ingredients.size()-1).getName() + ".</html>");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

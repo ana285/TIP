@@ -10,6 +10,8 @@
  */
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.event.MouseEvent;
+
 import data.Encrypt;
 import data.User;
 public class RegisterPageApp extends javax.swing.JFrame {
@@ -87,6 +89,9 @@ public class RegisterPageApp extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 EmailTextBoxMouseExited(evt);
             }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmailTextBoxMouseClicked(evt);
+            }
         });
         EmailTextBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +112,9 @@ public class RegisterPageApp extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 PasswordTextBoxMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PasswordTextBoxMouseClicked(evt);
             }
         });
 
@@ -137,6 +145,9 @@ public class RegisterPageApp extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 NameTextBoxMouseExited(evt);
             }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NameTextBoxMouseClicked(evt);
+            }
         });
         NameTextBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +170,10 @@ public class RegisterPageApp extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AddressTextBoxMouseExited(evt);
+            }
+            
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddressTextBoxMouseClicked(evt);
             }
         });
         AddressTextBox.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +198,9 @@ public class RegisterPageApp extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 TelephoneTextBoxMouseExited(evt);
             }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TelephoneTextBoxMouseClicked(evt);
+            }
         });
         TelephoneTextBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +223,10 @@ public class RegisterPageApp extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AddressTextBox2MouseExited(evt);
+            }
+            
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddressTextBox2MouseClicked(evt);
             }
         });
         AddressTextBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -463,7 +485,38 @@ public class RegisterPageApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MyAccountMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MyAccountMenuItemMouseEntered
+    protected void EmailTextBoxMouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	
+    	EmailTextBox.setText("");
+	}
+
+	protected void PasswordTextBoxMouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	PasswordTextBox.setText("");		
+	}
+
+	protected void NameTextBoxMouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	NameTextBox.setText("");		
+	}
+
+	protected void AddressTextBoxMouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	AddressTextBox.setText("");			
+	}
+
+	protected void TelephoneTextBoxMouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	TelephoneTextBox.setText("");				
+	}
+
+	protected void AddressTextBox2MouseClicked(MouseEvent evt) {
+		// TODO Auto-generated method stub
+    	AddressTextBox2.setText("");				
+	}
+
+	private void MyAccountMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MyAccountMenuItemMouseEntered
         // TODO add your handling code here:
         MyAccountMenuItem.setBackground(new Color(255, 255, 255));
         MyAccountMenuItem.setForeground(new Color(85, 26, 139));

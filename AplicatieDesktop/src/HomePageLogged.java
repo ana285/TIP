@@ -432,14 +432,14 @@ public class HomePageLogged extends javax.swing.JFrame {
 
     private void CartMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMenuItemMouseEntered
         // TODO add your handling code here:
-        AccountMenuItem.setBackground(new Color(255, 255, 255));
-        AccountMenuItem.setForeground(new Color(85, 26, 139));        
+    	CartMenuItem.setBackground(new Color(255, 255, 255));
+    	CartMenuItem.setForeground(new Color(85, 26, 139));        
     }//GEN-LAST:event_CartMenuItemMouseEntered
 
     private void CartMenuItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMenuItemMouseExited
         // TODO add your handling code here:
-        AccountMenuItem.setBackground(new Color(85, 26, 139));
-        AccountMenuItem.setForeground(new Color(255, 255, 255));
+    	CartMenuItem.setBackground(new Color(85, 26, 139));
+    	CartMenuItem.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_CartMenuItemMouseExited
     
     private void CartMenuItemMouseClicked(java.awt.event.MouseEvent evt) {                                          

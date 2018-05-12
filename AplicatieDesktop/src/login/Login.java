@@ -5,6 +5,7 @@
  */
 package login;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import data.Product;
 
@@ -20,7 +21,7 @@ public class Login {
 	public static List<Product> ItalianKitchen;
 	public static List<Product> MexicanKitchen;
 	
-    public static List<Product> MyCart;
+    public static HashMap<Product, Integer> MyCart;
     private static Product currentProduct = new Product();
 	
 	static {
@@ -28,7 +29,7 @@ public class Login {
 		GreekKitchen = servicii.web.ProductServiceApp.getProducts("greek");
 		ItalianKitchen = servicii.web.ProductServiceApp.getProducts("italian");
 		MexicanKitchen = servicii.web.ProductServiceApp.getProducts("mexican");
-        MyCart = new ArrayList<>();
+        MyCart = new HashMap<>();
 	}
 	  
 	public static int getLoggedUserId()
@@ -43,13 +44,33 @@ public class Login {
 	
     public static void addInCart(Product prod)
     {
-        MyCart.add(prod);
-        System.out.println(MyCart.get(MyCart.size()-1).getName());
+    	if(MyCart.get(prod)!=null)
+        {
+    		MyCart.put(prod, MyCart.get(prod)+1);
+        }
+    	else
+    	{
+    		MyCart.put(prod, 1);
+    	}
+
     }
     
-    public static void removeFromCart(int id)
+    public static void removeFromCart(String name)
     {
-    	MyCart.remove(id);
+    	for(Product key: MyCart.keySet())
+    	{
+    		if(key.getName().equals(name))
+    		{
+    			int freq = MyCart.get(key);
+    			if(freq == 1)
+    			{
+    				MyCart.remove(key);
+    				break;
+    			}
+    			else
+    				MyCart.put(key, freq-1);
+    		}
+    	}
     }
     
     public static void clearCart()
@@ -60,11 +81,16 @@ public class Login {
     public static double getTotalPrice()
     {
     	double s = 0;
-    	for(int i = 0; i < MyCart.size(); i++)
+    	int freq;
+    	
+
+    	for(Product key: MyCart.keySet())
     	{
-    		s += MyCart.get(i).getPrice();
+    		freq = MyCart.get(key);
+    		s += freq*key.getPrice(); 
     	}
-    	return s;
+    		
+    	return Math.floor(s * 100) / 100;
     }
     
     public static void putCurrentProduct(Product p)

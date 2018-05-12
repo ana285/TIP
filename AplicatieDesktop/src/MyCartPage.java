@@ -9,11 +9,47 @@
  * @author Sabina
  */
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
-import javax.swing.JLabel;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
+import data.Cart;
+import data.OrderProduct;
+import data.OrderUser;
+import data.Product;
+import data.User;
+
+
 
 public class MyCartPage extends javax.swing.JFrame {
+	
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	class NameActionListener implements ActionListener {
+	    private String name;
+
+	    public NameActionListener(String name) {
+	        this.name = name;
+	    }
+
+	    public void actionPerformed(ActionEvent e) {
+	    	
+	    	
+	        RemoveFromCart(name);
+	    }
+	}
 
     /**
      * Creates new form MyCartPage
@@ -33,39 +69,12 @@ public class MyCartPage extends javax.swing.JFrame {
     	
     	int nrOfProdInCart = login.Login.MyCart.size();   	
     	System.out.println(nrOfProdInCart);
-    	for(int i = 1; i <= nrOfProdInCart; i++)
-    	{
-    		
-    		System.out.println(login.Login.MyCart.get(i-1).getName());
-    	}
     	
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
-        P1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        P2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        P3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        P4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        P5 = new javax.swing.JLabel();
-        P6 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        P7 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        P8 = new javax.swing.JLabel();
-        P9 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        P10 = new javax.swing.JLabel();
-        P11 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
+
         jButton12 = new javax.swing.JButton();
-        P12 = new javax.swing.JLabel();
+
         MenuBar = new javax.swing.JMenuBar();
         MyAccountMenuItem = new javax.swing.JMenu();
         CartMenuItem = new javax.swing.JMenu();
@@ -81,443 +90,112 @@ public class MyCartPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1700, 800));
-        jScrollPane1.setWheelScrollingEnabled(false);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1600, 900));
+        
+        
+        jScrollPane1.setWheelScrollingEnabled(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setAutoscrolls(true);
-        jPanel1.setPreferredSize(new java.awt.Dimension(1700, 800));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1500, 3000));
+        jPanel1.setLayout(null);
 
+        label1 = new Label();
         label1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         label1.setForeground(new java.awt.Color(85, 26, 139));
+        label1.setBounds(0, 0, 150, 30);
         label1.setText("MY CART");
+        label1.setLocation(new Point(700, 100));
+        jPanel1.add(label1);
+        jPanel1.validate();
+        jPanel1.repaint();
 
-        P1.setBackground(new java.awt.Color(236, 223, 236));
-        P1.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        P1.setOpaque(true);
-        P1.setPreferredSize(new java.awt.Dimension(341, 24));
-        P1.setRequestFocusEnabled(false);
+        ArrayList<Button> buttons = new ArrayList<>();
+    	int offset = 0;
         
-        if(nrOfProdInCart>=1)
+        if(nrOfProdInCart==0)
         {
-        	P1.setVisible(true);
-        	P1.setText(login.Login.MyCart.get(0).getName() + "   -   "  + login.Login.MyCart.get(0).getPrice()+"$");
-
-        }
-        else
-        {
-        	P1.setVisible(true);
-        	P1.setBackground(Color.WHITE);
-        	P1.setForeground(new java.awt.Color(85, 26, 139));
-        	P1.setText("               Your cart is empty!");
-        	P1.setFont(new java.awt.Font("Times New Roman", 3, 24));
-        	jButton1.setVisible(false);
-        }
+        	Label label = new Label();
         	
-        
-        
-        jButton1.setBackground(new java.awt.Color(236, 223, 236));
-        jButton1.setText("X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(236, 223, 236));
-        jButton2.setText("X");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        P2.setBackground(new java.awt.Color(236, 223, 236));
-        P2.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        P2.setOpaque(true);
-        P2.setPreferredSize(new java.awt.Dimension(341, 24));
-        P2.setRequestFocusEnabled(false);
-        if(nrOfProdInCart>=2)
-        {
-        	P2.setVisible(true);
-        	P2.setText(login.Login.MyCart.get(1).getName() + "   -   "  + login.Login.MyCart.get(1).getPrice()+"$");
+            label.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+            label.setForeground(new java.awt.Color(85, 26, 139));
+            label.setBounds(0, 0, 300, 30);
+            label.setText("Your cart is empty!");
+            label.setLocation(new Point(650, 200));
+            jPanel1.add(label);
+            jPanel1.validate();
+            jPanel1.repaint();
         }
         else
         {
-        	P2.setVisible(false);
-        	jButton2.setVisible(false);
-        }
-
-        jButton3.setBackground(new java.awt.Color(236, 223, 236));
-        jButton3.setText("X");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        P3.setBackground(new java.awt.Color(236, 223, 236));
-        P3.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        if(nrOfProdInCart>=3)
-        {
-            P3.setText(login.Login.MyCart.get(2).getName() +  "   -   "  + login.Login.MyCart.get(2).getPrice()+"$");
-        	P3.setVisible(true);
-        }
-        else
-       	{
-        	jButton3.setVisible(false);
-        	P3.setVisible(false);
-        }
-        P3.setOpaque(true);
-        P3.setPreferredSize(new java.awt.Dimension(341, 24));
-        P3.setRequestFocusEnabled(false);
-
-        jButton4.setBackground(new java.awt.Color(236, 223, 236));
-        jButton4.setText("X");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        P4.setBackground(new java.awt.Color(236, 223, 236));
-        P4.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        P4.setOpaque(true);
-        P4.setPreferredSize(new java.awt.Dimension(341, 24));
-        P4.setRequestFocusEnabled(false);
-        
-        if(nrOfProdInCart>=4)
-        {
-            P4.setText(login.Login.MyCart.get(3).getName()+ "   -   "  + login.Login.MyCart.get(3).getPrice()+"$");
-        	P4.setVisible(true);
-        }
-        else
-       	{
-        	jButton4.setVisible(false);
-        	P4.setVisible(false);
+        	
+        	for(Product key: login.Login.MyCart.keySet())
+        	{
+        		int freq = login.Login.MyCart.get(key);
+        		double price = key.getPrice();
+        		String name = key.getName();
+        		
+                Button b = new Button(); 
+                b.setBackground(new java.awt.Color(236, 223, 236));
+                b.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+                b.setBounds(0, 0, 30, 30);
+                b.setLabel("X");
+                b.setLocation(600, 200+offset);
+                b.addActionListener(new NameActionListener(name));
+                buttons.add(b);
+                
+                
+                jPanel1.add(b);
+                jPanel1.validate();
+                jPanel1.repaint();
+                
+            	Label label = new Label();
+            	
+                label.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+                label.setForeground(new java.awt.Color(85, 26, 139));
+                label.setBounds(0, 0, 300, 30);
+                if(freq == 1)
+                	label.setText(name + " - " + price + "$");
+                else
+                	label.setText(freq + " X " + name + " - " + Math.floor(price*freq * 100) / 100 + "$");
+                label.setLocation(new Point(650, 200+offset));
+                jPanel1.add(label);
+                jPanel1.validate();
+                jPanel1.repaint();
+                offset+=50;
+                
+                
+        	}
         }
         
-        
-        jButton5.setBackground(new java.awt.Color(236, 223, 236));
-        jButton5.setText("X");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        P5.setBackground(new java.awt.Color(236, 223, 236));
-        P5.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        P5.setOpaque(true);
-        P5.setPreferredSize(new java.awt.Dimension(341, 24));
-        P5.setRequestFocusEnabled(false);
-        if(nrOfProdInCart>=5)
-        {
-            P5.setText(login.Login.MyCart.get(4).getName()+ "   -   "  + login.Login.MyCart.get(4).getPrice()+"$");
-        	P5.setVisible(true);
-        }
-        else
-        {
-        	jButton5.setVisible(false);
-        	P5.setVisible(false);
-        }
-        
-        P6.setBackground(new java.awt.Color(236, 223, 236));
-        P6.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        P6.setOpaque(true);
-        P6.setPreferredSize(new java.awt.Dimension(341, 24));
-        P6.setRequestFocusEnabled(false);
-        
-        if(nrOfProdInCart>=6)
-       	{
-            P6.setText(login.Login.MyCart.get(5).getName()+ "   -   "  + login.Login.MyCart.get(5).getPrice()+"$");        	
-        	P6.setVisible(true);
-        }
-        else
-        {
-        	jButton6.setVisible(false);
-        	P6.setVisible(false);
-        }
-
-
-        jButton6.setBackground(new java.awt.Color(236, 223, 236));
-        jButton6.setText("X");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton7.setBackground(new java.awt.Color(236, 223, 236));
-        jButton7.setText("X");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        P7.setBackground(new java.awt.Color(236, 223, 236));
-        P7.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        if(nrOfProdInCart>=7)
-        {
-            P7.setText(login.Login.MyCart.get(6).getName()+ "   -   "  + login.Login.MyCart.get(6).getPrice()+"$");          		
-        	P7.setVisible(true);
-        }
-        else
-        {
-        	jButton7.setVisible(false);
-        	P7.setVisible(false);
-        }
-        P7.setOpaque(true);
-        P7.setPreferredSize(new java.awt.Dimension(341, 24));
-        P7.setRequestFocusEnabled(false);
-
-        jButton8.setBackground(new java.awt.Color(236, 223, 236));
-        jButton8.setText("X");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
-        P8.setBackground(new java.awt.Color(236, 223, 236));
-        P8.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        if(nrOfProdInCart>=8)
-        {
-            P8.setText(login.Login.MyCart.get(7).getName()+ "   -   "  + login.Login.MyCart.get(7).getPrice()+"$");     
-        	P8.setVisible(true);
-        }
-        else
-        {
-        	jButton8.setVisible(false);
-        	P8.setVisible(false);
-        }
-        P8.setOpaque(true);
-        P8.setPreferredSize(new java.awt.Dimension(341, 24));
-        P8.setRequestFocusEnabled(false);
-
-        P9.setBackground(new java.awt.Color(236, 223, 236));
-        P9.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        if(nrOfProdInCart>=9)
-        {
-            P9.setText(login.Login.MyCart.get(8).getName()+ "   -   "  + login.Login.MyCart.get(8).getPrice()+"$");  
-        	P9.setVisible(true);
-        }
-        else
-        {
-        	jButton9.setVisible(false);        	
-        	P9.setVisible(false);
-        }
-        P9.setOpaque(true);
-        P9.setPreferredSize(new java.awt.Dimension(341, 24));
-        P9.setRequestFocusEnabled(false);
-
-        jButton9.setBackground(new java.awt.Color(236, 223, 236));
-        jButton9.setText("X");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        jButton10.setBackground(new java.awt.Color(236, 223, 236));
-        jButton10.setText("X");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
-        P10.setBackground(new java.awt.Color(236, 223, 236));
-        P10.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        if(nrOfProdInCart>=10)
-        {
-            P10.setText(login.Login.MyCart.get(9).getName()+ "   -   "  + login.Login.MyCart.get(9).getPrice()+"$");  
-        	P10.setVisible(true);
-        }
-        else
-        {
-        	jButton10.setVisible(false);
-        	P10.setVisible(false);
-        }
-        P10.setOpaque(true);
-        P10.setPreferredSize(new java.awt.Dimension(341, 24));
-        P10.setRequestFocusEnabled(false);
-
-        P11.setBackground(new java.awt.Color(236, 223, 236));
-        P11.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        if(nrOfProdInCart>=11)
-        {
-            P11.setText(login.Login.MyCart.get(10).getName() + "   -   " + login.Login.MyCart.get(10).getPrice()+"$");          	
-        	P11.setVisible(true);
-        }
-        else
-        {
-        	jButton11.setVisible(false);
-        	P11.setVisible(false);
-        }
-        P11.setOpaque(true);
-        P11.setPreferredSize(new java.awt.Dimension(341, 24));
-        P11.setRequestFocusEnabled(false);
-
-        jButton11.setBackground(new java.awt.Color(236, 223, 236));
-        jButton11.setText("X");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-
-        jButton12.setBackground(new java.awt.Color(236, 223, 236));
-        jButton12.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jButton12.setText("Command");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        
-        P12.setBackground(new java.awt.Color(255, 255, 255));
+        P12 = new Label();
         P12.setForeground(new java.awt.Color(85, 26, 139));
         P12.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         P12.setText("Total cost : " +  login.Login.getTotalPrice() + "$");
-        P12.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        P12.setOpaque(true);
-        P12.setPreferredSize(new java.awt.Dimension(341, 24));
-        P12.setRequestFocusEnabled(false);
-        P12.setOpaque(true);
-        P12.setPreferredSize(new java.awt.Dimension(341, 24));
-        P12.setRequestFocusEnabled(false);
-
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(578, 578, 578)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(452, 452, 452)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addGap(18, 18, 18)
-                                .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addGap(18, 18, 18)
-                                .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton8)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton10)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton9)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(P9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton11)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(P11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(73, 73, 73)
-                                            .addComponent(P12, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(607, 607, 607)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(850, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(P3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(P4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(P5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
-                    .addComponent(P6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(P7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8)
-                    .addComponent(P8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9)
-                    .addComponent(P9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton10)
-                    .addComponent(P10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton11)
-                    .addComponent(P11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(P12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
+        P12.setBounds(0, 0, 300, 30);
+        P12.setLocation(new Point(650, 250+offset));        
+        jPanel1.add(P12);
+        jPanel1.validate();
+        jPanel1.repaint();
+        
+        Button commandButton = new Button(); 
+        commandButton.setBackground(new java.awt.Color(236, 223, 236));
+        commandButton.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        commandButton.setBounds(0, 0, 100, 30);
+        commandButton.setLabel("Command");
+        commandButton.setLocation(700, 350+offset);
+        commandButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	commandButtonActionEvent(evt);
+            }
+        });
+        
+        jPanel1.add(commandButton);
+        jPanel1.validate();
+        jPanel1.repaint();
+      
         jScrollPane1.setViewportView(jPanel1);
 
         MenuBar.setBounds(500, 0, 500, 50);
@@ -712,29 +390,34 @@ public class MyCartPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 22, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void CartMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMenuItemMouseEntered
+    protected void bButtonActionEvent(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void CartMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMenuItemMouseEntered
         // TODO add your handling code here:
-        AccountMenuItem.setBackground(new Color(255, 255, 255));
-        AccountMenuItem.setForeground(new Color(85, 26, 139));
+		CartMenuItem.setBackground(new Color(255, 255, 255));
+		CartMenuItem.setForeground(new Color(85, 26, 139));
     }//GEN-LAST:event_CartMenuItemMouseEntered
 
     private void CartMenuItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMenuItemMouseExited
         // TODO add your handling code here:
-        AccountMenuItem.setBackground(new Color(85, 26, 139));
-        AccountMenuItem.setForeground(new Color(255, 255, 255));
+    	CartMenuItem.setBackground(new Color(85, 26, 139));
+    	CartMenuItem.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_CartMenuItemMouseExited
 
     private void AccountMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountMenuItemMouseClicked
@@ -866,100 +549,65 @@ public class MyCartPage extends javax.swing.JFrame {
         HomeMenuItem.setBackground(new Color(85, 26, 139));
         HomeMenuItem.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_HomeMenuItemMouseExited
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(0);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    	
-    	
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(1);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    	
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(2);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    	
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(3);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(4);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(5);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(6);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(7);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(8);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(9);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.removeFromCart(10);
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    	login.Login.clearCart();
-    	new MyCartPage().setVisible(true);
-    	this.setVisible(false);
-    }//GEN-LAST:event_jButton12ActionPerformed
     
     private void CartMenuItemMouseClicked(java.awt.event.MouseEvent evt) {                                          
         // TODO add your handling code here:
     	new MyCartPage().setVisible(true);
     	this.setVisible(false);
-    }                                         
+    } 
+    
+
+	private void commandButtonActionEvent(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		if(login.Login.MyCart.size()>0)
+		{
+			String email = servicii.web.LoginUserServiceApp.getUserID3(login.Login.getLoggedUserId()).getEmail();
+			User user = new User();
+			user.setEmail(email);
+			
+			OrderUser order = new OrderUser();
+			order.setUser(user);
+    		Cart cart = new Cart();
+    		
+			for(Product key: (login.Login.MyCart).keySet())
+        	{
+        		int quantity = login.Login.MyCart.get(key);
+        		for(int i = 0; i < quantity; i++)
+        		{
+        			cart.AddProduct(key);
+        		}
+        		
+        	}
+			order.setCart(cart);
+			ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+			String data="";
+			try {
+				data = ow.writeValueAsString(order);
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("My string object:" + data);
+			try {
+				servicii.web.AddOrderServiceApp.postOrder(data);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        		
+			 login.Login.clearCart();
+			 new CommandPage().setVisible(true);
+			 
+		}
+	}
+	
+	public void RemoveFromCart(String name)
+	{
+		login.Login.removeFromCart(name);
+		new MyCartPage().setVisible(true);
+		this.setVisible(false);
+
+	}
 
     
 
@@ -1010,30 +658,10 @@ public class MyCartPage extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenu MexicanMenuItem;
     private javax.swing.JMenu MyAccountMenuItem;
-    private javax.swing.JLabel P1;
-    private javax.swing.JLabel P10;
-    private javax.swing.JLabel P11;
-    private javax.swing.JLabel P12;
-    private javax.swing.JLabel P2;
-    private javax.swing.JLabel P3;
-    private javax.swing.JLabel P4;
-    private javax.swing.JLabel P5;
-    private javax.swing.JLabel P6;
-    private javax.swing.JLabel P7;
-    private javax.swing.JLabel P8;
-    private javax.swing.JLabel P9;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
+    
+    private java.awt.Label P12;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;

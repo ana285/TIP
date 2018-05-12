@@ -185,21 +185,26 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/38.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(1).getImg()))); // NOI18N
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel5.setText("Pesto Focaccia");
+        jLabel5.setText(login.Login.ItalianKitchen.get(1).getName());
 
         label1.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label1.setText("24,99$");
+        label1.setText(login.Login.ItalianKitchen.get(1).getPrice()+"$");
 
         jButton1.setBackground(new java.awt.Color(0, 204, 0));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton1.setText("ADD");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 204, 0));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -251,26 +256,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/37.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(0).getImg()))); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel7.setText("Ricotta & Scallion Fritters");
+        jLabel7.setText(login.Login.ItalianKitchen.get(0).getName());
 
         label2.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label2.setText("24,99$");
+        label2.setText(login.Login.ItalianKitchen.get(0).getPrice()+"$");
 
         jButton3.setBackground(new java.awt.Color(0, 204, 0));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton3.setText("ADD");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(0, 204, 0));
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("MORE");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -312,26 +327,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/39.jpg"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(2).getImg()))); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel9.setText("Scallops with Pesto");
+        jLabel9.setText(login.Login.ItalianKitchen.get(2).getName());
 
         label3.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label3.setText("24,99$");
+        label3.setText(login.Login.ItalianKitchen.get(2).getPrice()+"$");
 
         jButton5.setBackground(new java.awt.Color(0, 204, 0));
         jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton5.setText("ADD");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(0, 204, 0));
         jButton6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("MORE");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -376,26 +401,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/40.jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(3).getImg()))); // NOI18N
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel11.setText("Chickpea With Pesto");
+        jLabel11.setText(login.Login.ItalianKitchen.get(3).getName());
 
         label4.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label4.setText("24,99$");
+        label4.setText(login.Login.ItalianKitchen.get(3).getPrice()+"$");
 
         jButton7.setBackground(new java.awt.Color(0, 204, 0));
         jButton7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton7.setText("ADD");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(0, 204, 0));
         jButton8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("MORE");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -437,26 +472,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/41.jpg"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(4).getImg()))); // NOI18N
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel13.setText("White Bean Soup");
+        jLabel13.setText(login.Login.ItalianKitchen.get(4).getName());
 
         label5.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label5.setText("24,99$");
+        label5.setText(login.Login.ItalianKitchen.get(4).getPrice()+"$");
 
         jButton9.setBackground(new java.awt.Color(0, 204, 0));
         jButton9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton9.setText("ADD");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(0, 204, 0));
         jButton10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("MORE");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -496,58 +541,63 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/42.jpg"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(5).getImg()))); // NOI18N
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel16.setText("Bread & Tomato Soup");
+        jLabel16.setText(login.Login.ItalianKitchen.get(5).getName());
 
         label6.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label6.setText("24,99$");
+        label6.setText(login.Login.ItalianKitchen.get(5).getPrice()+"$");
 
         jButton11.setBackground(new java.awt.Color(0, 204, 0));
         jButton11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton11.setText("ADD");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setBackground(new java.awt.Color(0, 204, 0));
         jButton12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 255, 255));
         jButton12.setText("MORE");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)))
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19))))
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -558,26 +608,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/43.jpg"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(6).getImg()))); // NOI18N
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel18.setText("Caprese Salad");
+        jLabel18.setText(login.Login.ItalianKitchen.get(6).getName());
 
         label7.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label7.setText("24,99$");
+        label7.setText(login.Login.ItalianKitchen.get(6).getPrice()+"$");
 
         jButton13.setBackground(new java.awt.Color(0, 204, 0));
         jButton13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton13.setForeground(new java.awt.Color(255, 255, 255));
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton13.setText("ADD");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setBackground(new java.awt.Color(0, 204, 0));
         jButton14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton14.setForeground(new java.awt.Color(255, 255, 255));
         jButton14.setText("MORE");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -620,26 +680,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/44.jpg"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(7).getImg()))); // NOI18N
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel20.setText("Egg Salad");
+        jLabel20.setText(login.Login.ItalianKitchen.get(7).getName());
 
         label8.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label8.setText("24,99$");
+        label8.setText(login.Login.ItalianKitchen.get(7).getPrice()+"$");
 
         jButton15.setBackground(new java.awt.Color(0, 204, 0));
         jButton15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton15.setForeground(new java.awt.Color(255, 255, 255));
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton15.setText("ADD");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setBackground(new java.awt.Color(0, 204, 0));
         jButton16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton16.setForeground(new java.awt.Color(255, 255, 255));
         jButton16.setText("MORE");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -679,26 +749,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/45.jpg"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(8).getImg()))); // NOI18N
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel22.setText("Aragula & Pine Nut Salad");
+        jLabel22.setText(login.Login.ItalianKitchen.get(8).getName());
 
         label9.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label9.setText("24,99$");
+        label9.setText(login.Login.ItalianKitchen.get(8).getPrice()+"$");
 
         jButton17.setBackground(new java.awt.Color(0, 204, 0));
         jButton17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton17.setForeground(new java.awt.Color(255, 255, 255));
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton17.setText("ADD");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setBackground(new java.awt.Color(0, 204, 0));
         jButton18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton18.setForeground(new java.awt.Color(255, 255, 255));
         jButton18.setText("MORE");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -739,26 +819,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/46.jpg"))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(9).getImg()))); // NOI18N
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel26.setText("Rugatoni Pajata Alla Finta");
+        jLabel26.setText(login.Login.ItalianKitchen.get(9).getName());
 
         label10.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label10.setText("24,99$");
+        label10.setText(login.Login.ItalianKitchen.get(9).getPrice()+"$");
 
         jButton19.setBackground(new java.awt.Color(0, 204, 0));
         jButton19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton19.setForeground(new java.awt.Color(255, 255, 255));
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton19.setText("ADD");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButton20.setBackground(new java.awt.Color(0, 204, 0));
         jButton20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton20.setForeground(new java.awt.Color(255, 255, 255));
         jButton20.setText("MORE");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -800,26 +890,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/47.jpg"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(10).getImg()))); // NOI18N
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel28.setText("Lasagna");
+        jLabel28.setText(login.Login.ItalianKitchen.get(10).getName());
 
         label11.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label11.setText("24,99$");
+        label11.setText(login.Login.ItalianKitchen.get(10).getPrice()+"$");
 
         jButton21.setBackground(new java.awt.Color(0, 204, 0));
         jButton21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton21.setForeground(new java.awt.Color(255, 255, 255));
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton21.setText("ADD");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         jButton22.setBackground(new java.awt.Color(0, 204, 0));
         jButton22.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton22.setForeground(new java.awt.Color(255, 255, 255));
         jButton22.setText("MORE");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -861,26 +961,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/48.jpg"))); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(11).getImg()))); // NOI18N
 
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel30.setText("Pizza");
+        jLabel30.setText(login.Login.ItalianKitchen.get(11).getName());
 
         label12.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label12.setText("24,99$");
+        label12.setText(login.Login.ItalianKitchen.get(11).getPrice()+"$");
 
         jButton23.setBackground(new java.awt.Color(0, 204, 0));
         jButton23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton23.setForeground(new java.awt.Color(255, 255, 255));
         jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton23.setText("ADD");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setBackground(new java.awt.Color(0, 204, 0));
         jButton24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton24.setForeground(new java.awt.Color(255, 255, 255));
         jButton24.setText("MORE");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -923,26 +1033,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/49.jpeg"))); // NOI18N
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(12).getImg()))); // NOI18N
 
         jLabel33.setBackground(new java.awt.Color(255, 255, 255));
         jLabel33.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel33.setText("Milk Pudding");
+        jLabel33.setText(login.Login.ItalianKitchen.get(12).getName());
 
         label13.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label13.setText("24,99$");
+        label13.setText(login.Login.ItalianKitchen.get(12).getPrice()+"$");
 
         jButton25.setBackground(new java.awt.Color(0, 204, 0));
         jButton25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton25.setForeground(new java.awt.Color(255, 255, 255));
         jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton25.setText("ADD");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         jButton26.setBackground(new java.awt.Color(0, 204, 0));
         jButton26.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton26.setForeground(new java.awt.Color(255, 255, 255));
         jButton26.setText("MORE");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -985,26 +1105,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/50.jpg"))); // NOI18N
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(13).getImg()))); // NOI18N
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel35.setText("Coffe Granita");
+        jLabel35.setText(login.Login.ItalianKitchen.get(13).getName());
 
         label14.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label14.setText("24,99$");
+        label14.setText(login.Login.ItalianKitchen.get(13).getPrice()+"$");
 
         jButton27.setBackground(new java.awt.Color(0, 204, 0));
         jButton27.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton27.setForeground(new java.awt.Color(255, 255, 255));
         jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton27.setText("ADD");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
 
         jButton28.setBackground(new java.awt.Color(0, 204, 0));
         jButton28.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton28.setForeground(new java.awt.Color(255, 255, 255));
         jButton28.setText("MORE");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1014,18 +1144,19 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))
                     .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel35)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(jLabel35)
+                                .addGap(109, 109, 109)
+                                .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel34))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(20, Short.MAX_VALUE))))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1046,26 +1177,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/51.jpg"))); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(14).getImg()))); // NOI18N
 
         jLabel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel37.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel37.setText("Lemon Granita");
+        jLabel37.setText(login.Login.ItalianKitchen.get(14).getName());
 
         label15.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label15.setText("24,99$");
+        label15.setText(login.Login.ItalianKitchen.get(14).getPrice()+"$");
 
         jButton29.setBackground(new java.awt.Color(0, 204, 0));
         jButton29.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton29.setForeground(new java.awt.Color(255, 255, 255));
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton29.setText("ADD");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
 
         jButton30.setBackground(new java.awt.Color(0, 204, 0));
         jButton30.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton30.setForeground(new java.awt.Color(255, 255, 255));
         jButton30.setText("MORE");
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1104,26 +1245,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/52.jpg"))); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(15).getImg()))); // NOI18N
 
         jLabel39.setBackground(new java.awt.Color(255, 255, 255));
         jLabel39.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel39.setText("Tricolore");
+        jLabel39.setText(login.Login.ItalianKitchen.get(15).getName());
 
         label16.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label16.setText("24,99$");
+        label16.setText(login.Login.ItalianKitchen.get(15).getPrice()+"$");
 
         jButton31.setBackground(new java.awt.Color(0, 204, 0));
         jButton31.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton31.setForeground(new java.awt.Color(255, 255, 255));
         jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton31.setText("ADD");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
 
         jButton32.setBackground(new java.awt.Color(0, 204, 0));
         jButton32.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton32.setForeground(new java.awt.Color(255, 255, 255));
         jButton32.setText("MORE");
+        jButton32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton32ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -1167,27 +1318,37 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/53.jpg"))); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(16).getImg()))); // NOI18N
 
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel41.setText("Strawberry Lassi");
+        jLabel41.setText(login.Login.ItalianKitchen.get(16).getName());
         jLabel41.setToolTipText("");
 
         label17.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label17.setText("24,99$");
+        label17.setText(login.Login.ItalianKitchen.get(16).getPrice()+"$");
 
         jButton33.setBackground(new java.awt.Color(0, 204, 0));
         jButton33.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton33.setForeground(new java.awt.Color(255, 255, 255));
         jButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton33.setText("ADD");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
 
         jButton34.setBackground(new java.awt.Color(0, 204, 0));
         jButton34.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton34.setForeground(new java.awt.Color(255, 255, 255));
         jButton34.setText("MORE");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1229,26 +1390,36 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/italian/54.jpg"))); // NOI18N
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.ItalianKitchen.get(17).getImg()))); // NOI18N
 
         jLabel43.setBackground(new java.awt.Color(255, 255, 255));
         jLabel43.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel43.setText("Cinnamon Hot Chocolate");
+        jLabel43.setText(login.Login.ItalianKitchen.get(17).getName());
 
         label18.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label18.setText("24,99$");
+        label18.setText(login.Login.ItalianKitchen.get(17).getPrice()+"$");
 
         jButton35.setBackground(new java.awt.Color(0, 204, 0));
         jButton35.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton35.setForeground(new java.awt.Color(255, 255, 255));
         jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ShoppingCart.png"))); // NOI18N
         jButton35.setText("ADD");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
 
         jButton36.setBackground(new java.awt.Color(0, 204, 0));
         jButton36.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton36.setForeground(new java.awt.Color(255, 255, 255));
         jButton36.setText("MORE");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -1645,9 +1816,6 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void AccountMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountMenuItemMouseClicked
         // TODO add your handling code here:
@@ -1812,7 +1980,205 @@ public class ItalianKitchenLogged extends javax.swing.JFrame {
         // TODO add your handling code here:
     	new MyCartPage().setVisible(true);
     	this.setVisible(false);
-    }  
+    }
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(0));
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(1));
+    }
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(2));
+    }
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(3));
+    }
+    
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(4));
+    }
+    
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(5));
+    }
+    
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(6));
+    }
+    
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(7));
+    }
+    
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(8));
+    }
+    
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(9));
+    }
+    
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(10));
+    }
+    
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(11));
+    }
+    
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(12));
+    }
+    
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(13));
+    }
+    
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(14));
+    }
+    
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(15));
+    }
+    
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(16));
+    }
+    
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        login.Login.addInCart(login.Login.ItalianKitchen.get(17));
+    }
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(0));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(1));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(2));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(3));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(4));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(5));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(6));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(7));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(8));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(9));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(10));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(11));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(12));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(13));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(14));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(15));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(16));
+    	new MorePopUp().setVisible(true);
+    }
+    
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	login.Login.putCurrentProduct(login.Login.ItalianKitchen.get(17));
+    	new MorePopUp().setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
