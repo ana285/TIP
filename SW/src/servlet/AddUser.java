@@ -100,7 +100,9 @@ public class AddUser extends HttpServlet {
 			response = service.path("rest").path("register").request(MediaType.APPLICATION_XML).post(Entity.entity(user, MediaType.APPLICATION_XML), Response.class);
 			System.out.println(response.getStatus());
 			if(response.getStatus() == 201) {
-				TLSEmail.setEmail(email);
+				String subject = "Revenue: Confirmation e-mail";
+				String body = "Thank you for choosing us. Your account has been successful created!";
+				TLSEmail.setEmail(email, subject, body);
 				request.getRequestDispatcher("login.jsp").forward(request, resp);
 			}
 

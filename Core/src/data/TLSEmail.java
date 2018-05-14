@@ -14,7 +14,7 @@ public class TLSEmail {
 	   Use Authentication: Yes
 	   Port for TLS/STARTTLS: 587
 	 */
-	public static void setEmail(String toEmail){
+	public static void setEmail(String toEmail, String subject, String body){
 		final String fromEmail = "banana.rusu@gmail.com"; //requires valid gmail id
 		final String password = "123456Restaurant"; // correct password for gmail id
 		//final String toEmail = "myemail@yahoo.com"; // can be any email id 
@@ -35,7 +35,7 @@ public class TLSEmail {
 		};
 		Session session = Session.getInstance(props, auth);
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", "TLSEmail Testing Body");
+		EmailUtil.sendEmail(session, toEmail, subject, body);
 		
 	}
 
