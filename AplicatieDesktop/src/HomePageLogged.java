@@ -314,7 +314,7 @@ public class HomePageLogged extends javax.swing.JFrame {
     private void LogOutMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMenuItemMouseClicked
         // TODO add your handling code here:
         new LoginPageApp().setVisible(true);
-        login.Login.putLoggedUserId(-1);
+        login.Login.setUserID(-1);
         login.Login.clearCart();
         this.setVisible(false);
     }//GEN-LAST:event_LogOutMenuItemMouseClicked

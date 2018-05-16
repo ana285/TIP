@@ -11,12 +11,36 @@
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import data.User;
+import data.UserDeserializer;
 import data.Encrypt;
 
 public class LoginPageApp extends javax.swing.JFrame {
-
+	private static final long serialVersionUID = 1L;
+	private static URI getBaseURI() {
+		//TODO change the port to whatever is the server running on
+		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+	}
+	
     /**
      * Creates new form LoginPageApp
      */
@@ -384,22 +408,70 @@ public class LoginPageApp extends javax.swing.JFrame {
     	
     	System.out.println(email);
     	System.out.println(password);
-    	User user = servicii.web.LoginUserServiceApp.getUserID2(email);
-    	if((servicii.web.LoginUserServiceApp.postUserStatus2(user, password)).equals("true"))
-    	{
-    		System.out.println("User logat");
-            jLabel1.setVisible(false);
-            new HomePageLogged().setVisible(true);
-            login.Login.putLoggedUserId(user.getId());
-            this.setVisible(false);
-            
-    		 
-    	}
-    	else
+    	
+    	ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(config);
+		client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+		WebTarget service = client.target(getBaseURI());
+		Response response;
+		User user2 = new User();
+		user2.setPassword(password);
+		user2.setEmail(email);
+		response = service.path("rest").path("login").request().post(Entity.entity(user2, MediaType.APPLICATION_XML), Response.class);
+		String data2 = response.readEntity(String.class);
+    	System.out.println(data2);
+    	if(data2.equals("false"))
     	{
     		System.out.println("Parola sau user gresit");
     		jLabel1.setText("Incorrect user or password!");
     		jLabel1.setVisible(true);
+          
+    		 
+    	}
+    	else
+    	{
+			response = service.path("rest").path("login").path(email).request().accept(MediaType.APPLICATION_JSON).get(Response.class);
+			String data = response.readEntity(String.class);
+			int status = response.getStatus();
+			System.out.println(status);
+
+			if (status==200){
+				ObjectMapper mapper = new ObjectMapper();
+				SimpleModule module = new SimpleModule("UserDeserializer");
+				module.addDeserializer(User.class, new UserDeserializer());
+				mapper.registerModule(module);
+				User user = new User();
+				try {
+					user = mapper.readValue(data, User.class);
+				} catch (JsonParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JsonMappingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(user.getEmail());
+    		
+				System.out.println("User logat");
+		    	login.Login.setName(user.getName());
+		    	login.Login.setEmail(user.getEmail());
+		    	login.Login.setTelephone(user.getTelephone());
+		    	login.Login.setAddress1(user.getAddress1());
+		    	login.Login.setAddress2(user.getAddress2());
+				
+				jLabel1.setVisible(false);
+				new HomePageLogged().setVisible(true);
+				this.setVisible(false);
+			}
+			else
+			{
+	    		System.out.println("Parola sau user gresit");
+	    		jLabel1.setText("Incorrect user or password!");
+	    		jLabel1.setVisible(true);
+			}
     	}
     	
         

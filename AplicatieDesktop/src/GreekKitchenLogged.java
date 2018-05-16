@@ -11,8 +11,35 @@
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import data.Product;
 
 public class GreekKitchenLogged extends javax.swing.JFrame {
+	
+	static List<Product> items = new ArrayList<>();
+	
+	private static URI getBaseURI() {
+		//TODO change the port to whatever is the server running on
+		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+	}
 
     /**
      * Creates new form GreekKitchenLogged
@@ -163,6 +190,39 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1700, 880));
+        
+   		ClientConfig config = new ClientConfig();
+   		Client client = ClientBuilder.newClient(config);
+   		client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+   		WebTarget service = client.target(getBaseURI());
+   		
+   		Response response;
+   		response = service.path("rest").path("product").path("Greek").request().accept(MediaType.APPLICATION_JSON).get(Response.class);
+   		String data = response.readEntity(String.class);
+   		int status = response.getStatus();
+   		ObjectMapper objectmapper = new ObjectMapper();
+
+   		try {
+   			items = objectmapper.readValue(
+   				    data,
+   				    objectmapper.getTypeFactory().constructCollectionType(List.class, Product.class)
+   				);
+   		} catch (JsonParseException e) {
+   			// TODO Auto-generated catch block
+   			e.printStackTrace();
+   		} catch (JsonMappingException e) {
+   			// TODO Auto-generated catch block
+   			e.printStackTrace();
+   		} catch (IOException e) {
+   			// TODO Auto-generated catch block
+   			e.printStackTrace();
+   		}
+   		
+   		System.out.println(data);
+   		if (status==200){
+   		}else {
+   			
+   		}
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1600, 4500));
@@ -177,15 +237,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(1).getImg()))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(1).getImg()))); // NOI18N
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel5.setText(login.Login.GreekKitchen.get(1).getName());
+        jLabel5.setText(items.get(1).getName());
 
         label1.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label1.setText(login.Login.GreekKitchen.get(1).getPrice()+"$");
+        label1.setText(items.get(1).getPrice()+"$");
 
         jButton1.setBackground(new java.awt.Color(0, 160, 166));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -250,15 +310,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(0).getImg()))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(0).getImg()))); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel7.setText(login.Login.GreekKitchen.get(0).getName());
+        jLabel7.setText(items.get(0).getName());
 
         label2.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label2.setText(login.Login.GreekKitchen.get(0).getPrice()+"$");
+        label2.setText(items.get(0).getPrice()+"$");
 
         jButton3.setBackground(new java.awt.Color(0, 160, 166));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -322,15 +382,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(2).getImg()))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(2).getImg()))); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel9.setText(login.Login.GreekKitchen.get(2).getName());
+        jLabel9.setText(items.get(2).getName());
 
         label3.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label3.setText(login.Login.GreekKitchen.get(2).getPrice()+"$");
+        label3.setText(items.get(2).getPrice()+"$");
 
         jButton5.setBackground(new java.awt.Color(0, 160, 166));
         jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -394,15 +454,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(3).getImg()))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(3).getImg()))); // NOI18N
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel11.setText(login.Login.GreekKitchen.get(3).getName());
+        jLabel11.setText(items.get(3).getName());
 
         label4.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label4.setText(login.Login.GreekKitchen.get(3).getPrice()+"$");
+        label4.setText(items.get(3).getPrice()+"$");
 
         jButton7.setBackground(new java.awt.Color(0, 160, 166));
         jButton7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -468,15 +528,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(4).getImg()))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(4).getImg()))); // NOI18N
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel13.setText(login.Login.GreekKitchen.get(4).getName());
+        jLabel13.setText(items.get(4).getName());
 
         label5.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label5.setText(login.Login.GreekKitchen.get(4).getPrice()+"$");
+        label5.setText(items.get(4).getPrice()+"$");
 
         jButton9.setBackground(new java.awt.Color(0, 160, 166));
         jButton9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -546,15 +606,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(5).getImg()))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(5).getImg()))); // NOI18N
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel16.setText(login.Login.GreekKitchen.get(5).getName());
+        jLabel16.setText(items.get(5).getName());
 
         label6.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label6.setText(login.Login.GreekKitchen.get(5).getPrice()+"$");
+        label6.setText(items.get(5).getPrice()+"$");
 
         jButton11.setBackground(new java.awt.Color(0, 160, 166));
         jButton11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -619,15 +679,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(6).getImg()))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(6).getImg()))); // NOI18N
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel18.setText(login.Login.GreekKitchen.get(6).getName());
+        jLabel18.setText(items.get(6).getName());
 
         label7.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label7.setText(login.Login.GreekKitchen.get(6).getPrice()+"$");
+        label7.setText(items.get(6).getPrice()+"$");
 
         jButton13.setBackground(new java.awt.Color(0, 160, 166));
         jButton13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -693,15 +753,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(7).getImg()))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(7).getImg()))); // NOI18N
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel20.setText(login.Login.GreekKitchen.get(7).getName());
+        jLabel20.setText(items.get(7).getName());
 
         label8.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label8.setText(login.Login.GreekKitchen.get(7).getPrice()+"$");
+        label8.setText(items.get(7).getPrice()+"$");
 
         jButton15.setBackground(new java.awt.Color(0, 160, 166));
         jButton15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -766,15 +826,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(8).getImg()))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(8).getImg()))); // NOI18N
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel22.setText(login.Login.GreekKitchen.get(8).getName());
+        jLabel22.setText(items.get(8).getName());
 
         label9.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label9.setText(login.Login.GreekKitchen.get(8).getPrice()+"$");
+        label9.setText(items.get(8).getPrice()+"$");
 
         jButton17.setBackground(new java.awt.Color(0, 160, 166));
         jButton17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -845,15 +905,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(9).getImg()))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(9).getImg()))); // NOI18N
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel26.setText(login.Login.GreekKitchen.get(9).getName());
+        jLabel26.setText(items.get(9).getName());
 
         label10.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label10.setText(login.Login.GreekKitchen.get(9).getPrice() + "$");
+        label10.setText(items.get(9).getPrice() + "$");
 
         jButton19.setBackground(new java.awt.Color(0, 160, 166));
         jButton19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -917,15 +977,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(10).getImg()))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(10).getImg()))); // NOI18N
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel28.setText(login.Login.GreekKitchen.get(10).getName());
+        jLabel28.setText(items.get(10).getName());
 
         label11.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label11.setText(login.Login.GreekKitchen.get(10).getPrice() + "$");
+        label11.setText(items.get(10).getPrice() + "$");
 
         jButton21.setBackground(new java.awt.Color(0, 160, 166));
         jButton21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -989,15 +1049,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(11).getImg()))); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(11).getImg()))); // NOI18N
 
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel30.setText(login.Login.GreekKitchen.get(11).getName());
+        jLabel30.setText(items.get(11).getName());
 
         label12.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label12.setText(login.Login.GreekKitchen.get(11).getPrice() + "$");
+        label12.setText(items.get(11).getPrice() + "$");
 
         jButton23.setBackground(new java.awt.Color(0, 160, 166));
         jButton23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1065,15 +1125,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(12).getImg()))); // NOI18N
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(12).getImg()))); // NOI18N
 
         jLabel33.setBackground(new java.awt.Color(255, 255, 255));
         jLabel33.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel33.setText(login.Login.GreekKitchen.get(12).getName());
+        jLabel33.setText(items.get(12).getName());
 
         label13.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label13.setText(login.Login.GreekKitchen.get(12).getPrice() + "$");
+        label13.setText(items.get(12).getPrice() + "$");
 
         jButton25.setBackground(new java.awt.Color(0, 160, 166));
         jButton25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1137,15 +1197,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(13).getImg()))); // NOI18N
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(13).getImg()))); // NOI18N
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel35.setText(login.Login.GreekKitchen.get(13).getName());
+        jLabel35.setText(items.get(13).getName());
 
         label14.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label14.setText(login.Login.GreekKitchen.get(13).getPrice() + "$");
+        label14.setText(items.get(13).getPrice() + "$");
 
         jButton27.setBackground(new java.awt.Color(0, 160, 166));
         jButton27.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1209,15 +1269,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(14).getImg()))); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(14).getImg()))); // NOI18N
 
         jLabel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel37.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel37.setText(login.Login.GreekKitchen.get(14).getName());
+        jLabel37.setText(items.get(14).getName());
 
         label15.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label15.setText(login.Login.GreekKitchen.get(14).getPrice()+"$");
+        label15.setText(items.get(14).getPrice()+"$");
 
         jButton29.setBackground(new java.awt.Color(0, 160, 166));
         jButton29.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1280,15 +1340,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(15).getImg()))); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(15).getImg()))); // NOI18N
 
         jLabel39.setBackground(new java.awt.Color(255, 255, 255));
         jLabel39.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel39.setText(login.Login.GreekKitchen.get(15).getName());
+        jLabel39.setText(items.get(15).getName());
 
         label16.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label16.setText(login.Login.GreekKitchen.get(15).getPrice()+"$");
+        label16.setText(items.get(15).getPrice()+"$");
 
         jButton31.setBackground(new java.awt.Color(0, 160, 166));
         jButton31.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1352,16 +1412,16 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(16).getImg()))); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(16).getImg()))); // NOI18N
 
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel41.setText(login.Login.GreekKitchen.get(16).getName());
+        jLabel41.setText(items.get(16).getName());
         jLabel41.setToolTipText("");
 
         label17.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label17.setText(login.Login.GreekKitchen.get(16).getPrice()+"$");
+        label17.setText(items.get(16).getPrice()+"$");
 
         jButton33.setBackground(new java.awt.Color(0, 160, 166));
         jButton33.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1425,15 +1485,15 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource(login.Login.GreekKitchen.get(17).getImg()))); // NOI18N
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(17).getImg()))); // NOI18N
 
         jLabel43.setBackground(new java.awt.Color(255, 255, 255));
         jLabel43.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 160, 166));
-        jLabel43.setText(login.Login.GreekKitchen.get(17).getName());
+        jLabel43.setText(items.get(17).getName());
 
         label18.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label18.setText(login.Login.GreekKitchen.get(17).getPrice()+"$");
+        label18.setText(items.get(17).getPrice()+"$");
 
         jButton35.setBackground(new java.awt.Color(0, 160, 166));
         jButton35.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1498,7 +1558,7 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
         jLabel44.setText("DRINKS");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
-        jLabel2.setText("Kalosórisma ! What do you want to eat today?");
+        jLabel2.setText("       What do you want to eat today?");
 
         jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Coperta8.jpg"))); // NOI18N
 
@@ -1859,7 +1919,7 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
     private void LogOutMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMenuItemMouseClicked
         // TODO add your handling code here:
         new LoginPageApp().setVisible(true);
-        login.Login.putLoggedUserId(-1);
+        login.Login.setUserID(-1);
         login.Login.clearCart();
         this.setVisible(false);
     }//GEN-LAST:event_LogOutMenuItemMouseClicked
@@ -2011,199 +2071,199 @@ public class GreekKitchenLogged extends javax.swing.JFrame {
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(0));
+        login.Login.addInCart(items.get(0));
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(1));
+        login.Login.addInCart(items.get(1));
     }
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(2));
+        login.Login.addInCart(items.get(2));
     }
     
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(3));
+        login.Login.addInCart(items.get(3));
     }
     
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(4));
+        login.Login.addInCart(items.get(4));
     }
     
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(5));
+        login.Login.addInCart(items.get(5));
     }
     
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(6));
+        login.Login.addInCart(items.get(6));
     }
     
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(7));
+        login.Login.addInCart(items.get(7));
     }
     
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(8));
+        login.Login.addInCart(items.get(8));
     }
     
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(9));
+        login.Login.addInCart(items.get(9));
     }
     
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(10));
+        login.Login.addInCart(items.get(10));
     }
     
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(11));
+        login.Login.addInCart(items.get(11));
     }
     
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(12));
+        login.Login.addInCart(items.get(12));
     }
     
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(13));
+        login.Login.addInCart(items.get(13));
     }
     
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(14));
+        login.Login.addInCart(items.get(14));
     }
     
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(15));
+        login.Login.addInCart(items.get(15));
     }
     
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(16));
+        login.Login.addInCart(items.get(16));
     }
     
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        login.Login.addInCart(login.Login.GreekKitchen.get(17));
+        login.Login.addInCart(items.get(17));
     }
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(0));
+    	login.Login.putCurrentProduct(items.get(0));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(1));
+    	login.Login.putCurrentProduct(items.get(1));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(2));
+    	login.Login.putCurrentProduct(items.get(2));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(3));
+    	login.Login.putCurrentProduct(items.get(3));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(4));
+    	login.Login.putCurrentProduct(items.get(4));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(5));
+    	login.Login.putCurrentProduct(items.get(5));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(6));
+    	login.Login.putCurrentProduct(items.get(6));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(7));
+    	login.Login.putCurrentProduct(items.get(7));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(8));
+    	login.Login.putCurrentProduct(items.get(8));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(9));
+    	login.Login.putCurrentProduct(items.get(9));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(10));
+    	login.Login.putCurrentProduct(items.get(10));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(11));
+    	login.Login.putCurrentProduct(items.get(11));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(12));
+    	login.Login.putCurrentProduct(items.get(12));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(13));
+    	login.Login.putCurrentProduct(items.get(13));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(14));
+    	login.Login.putCurrentProduct(items.get(14));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(15));
+    	login.Login.putCurrentProduct(items.get(15));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(16));
+    	login.Login.putCurrentProduct(items.get(16));
     	new MorePopUp().setVisible(true);
     }
     
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	login.Login.putCurrentProduct(login.Login.GreekKitchen.get(17));
+    	login.Login.putCurrentProduct(items.get(17));
     	new MorePopUp().setVisible(true);
     }
 

@@ -17,7 +17,19 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,6 +44,11 @@ import data.User;
 
 
 public class MyCartPage extends javax.swing.JFrame {
+	
+	private static URI getBaseURI() {
+		//TODO change the port to whatever is the server running on
+		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+	}
 	
 	 /**
 	 * 
@@ -435,7 +452,7 @@ public class MyCartPage extends javax.swing.JFrame {
     private void LogOutMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMenuItemMouseClicked
         // TODO add your handling code here:
         new LoginPageApp().setVisible(true);
-        login.Login.putLoggedUserId(-1);
+        login.Login.setUserID(-1);
         login.Login.clearCart();
         this.setVisible(false);
     }//GEN-LAST:event_LogOutMenuItemMouseClicked
@@ -561,7 +578,7 @@ public class MyCartPage extends javax.swing.JFrame {
 		// TODO Auto-generated method stub
 		if(login.Login.MyCart.size()>0)
 		{
-			String email = servicii.web.LoginUserServiceApp.getUserID3(login.Login.getLoggedUserId()).getEmail();
+			String email = login.Login.getEmail();
 			User user = new User();
 			user.setEmail(email);
 			
@@ -579,7 +596,8 @@ public class MyCartPage extends javax.swing.JFrame {
         		
         	}
 			order.setCart(cart);
-			ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+			
+			com.fasterxml.jackson.databind.ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 			String data="";
 			try {
 				data = ow.writeValueAsString(order);
@@ -588,13 +606,33 @@ public class MyCartPage extends javax.swing.JFrame {
 				e.printStackTrace();
 			}
 			System.out.println("My string object:" + data);
-			try {
-				servicii.web.AddOrderServiceApp.postOrder(data);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+			ClientConfig config = new ClientConfig();
+	        Client client = ClientBuilder.newClient(config);
+	      
+	        client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+			WebTarget service = client.target(getBaseURI());
+			Response response;
+
+			response = service.path("rest").path("addOrder").request(MediaType.TEXT_PLAIN).post(Entity.entity(data, MediaType.APPLICATION_JSON), Response.class);
+			
+			System.out.println(response.getStatus());
+			System.out.println(response);
+			
+			if(response.getStatus() == 200) {
+				String data2 = response.readEntity(String.class);
+				if(data2.equals("true")) {
+					System.out.println("Your order was put in place! Thank you for choosing us!");
+				}else {
+					System.out.println("Your order !");	
+				}
+				
 			}
-        		
+			else {
+				System.out.println("Something went wrong! Windows type of error XD");
+			}
+			
+			
 			 login.Login.clearCart();
 			 new CommandPage().setVisible(true);
 			 

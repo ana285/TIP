@@ -364,15 +364,14 @@ public class MyAccountPage extends javax.swing.JFrame {
 
         setJMenuBar(MenuBar);
         
-    	int UserId = login.Login.getLoggedUserId(); 
-    	User user = servicii.web.LoginUserServiceApp.getUserID3(UserId);
-    	NameTextBox.setText("    " + user.getName());
-    	EmailTextBox.setText("   " + user.getEmail());
-    	TelephoneTextBox.setText("   " + user.getTelephone());
-    	Address1TextBox.setText("   " + user.getAddress1());
-    	if(user.getAddress2() != null)
+    	int UserId = login.Login.getUserID();
+    	NameTextBox.setText("    " + login.Login.getName());
+    	EmailTextBox.setText("   " + login.Login.getEmail());
+    	TelephoneTextBox.setText("   " + login.Login.getTelephone());
+    	Address1TextBox.setText("   " + login.Login.getAddress1());
+    	if(login.Login.getAddress2() != null)
     	{
-    		Address2TextBox.setText("   " + user.getAddress2());
+    		Address2TextBox.setText("   " + login.Login.getAddress2());
     	}
     	else
     	{
@@ -420,7 +419,7 @@ public class MyAccountPage extends javax.swing.JFrame {
     private void LogOutMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMenuItemMouseClicked
         // TODO add your handling code here:
         new LoginPageApp().setVisible(true);
-        login.Login.putLoggedUserId(-1);
+        login.Login.setUserID(-1);
         login.Login.clearCart();
         this.setVisible(false);
     }//GEN-LAST:event_LogOutMenuItemMouseClicked

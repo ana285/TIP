@@ -11,8 +11,33 @@
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import data.Product;
 
 public class FrenchKitchenApp extends javax.swing.JFrame {
+	
+	private static URI getBaseURI() {
+		//TODO change the port to whatever is the server running on
+		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+	}
 
     /**
      * Creates new form FrenchKitchenApp
@@ -159,8 +184,43 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         HomeMenuItem = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+		
+		ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(config);
+		client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+		WebTarget service = client.target(getBaseURI());
+		
+		Response response;
+		response = service.path("rest").path("product").path("French").request().accept(MediaType.APPLICATION_JSON).get(Response.class);
+		String data = response.readEntity(String.class);
+		int status = response.getStatus();
+		ObjectMapper objectmapper = new ObjectMapper();
+		List<Product> items = new ArrayList<>();
+		try {
+			items = objectmapper.readValue(
+				    data,
+				    objectmapper.getTypeFactory().constructCollectionType(List.class, Product.class)
+				);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(data);
+		if (status==200){
+		}else {
+			
+		}
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -184,15 +244,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/2.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(1).getImg()))); // NOI18N
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel5.setText("Alsatian Bacon & Onion Tart");
+        jLabel5.setText(items.get(1).getName());
 
         label1.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label1.setText("24,99$");
+        label1.setText(items.get(1).getPrice()+"$");
 
         jButton1.setBackground(new java.awt.Color(229, 135, 181));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -250,15 +310,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/1.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(0).getImg()))); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel7.setText("Ratatouille Appetizer Pizza ");
+        jLabel7.setText(items.get(1).getName());
 
         label2.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label2.setText("24,99$");
+        label2.setText(items.get(1).getPrice()+"$");
 
         jButton3.setBackground(new java.awt.Color(229, 135, 181));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -311,15 +371,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/3.jpg"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(2).getImg()))); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel9.setText("Salmon Rilletes");
+        jLabel9.setText(items.get(2).getName());
 
         label3.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label3.setText("24,99$");
+        label3.setText(items.get(2).getPrice()+"$");
 
         jButton5.setBackground(new java.awt.Color(229, 135, 181));
         jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -372,15 +432,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/4.jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(3).getImg()))); // NOI18N
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel11.setText("Black Bean Soup");
+        jLabel11.setText(items.get(3).getName());
 
         label4.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label4.setText("24,99$");
+        label4.setText(items.get(3).getPrice()+"$");
 
         jButton7.setBackground(new java.awt.Color(229, 135, 181));
         jButton7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -435,15 +495,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/5.jpg"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(4).getImg()))); // NOI18N
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel13.setText("Chicken Tortilla Soup");
+        jLabel13.setText(items.get(4).getName());
 
         label5.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label5.setText("24,99$");
+        label5.setText(items.get(4).getPrice()+"$");
 
         jButton9.setBackground(new java.awt.Color(229, 135, 181));
         jButton9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -494,15 +554,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/6.jpg"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(5).getImg()))); // NOI18N
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel16.setText("Pumpkin Soup");
+        jLabel16.setText(items.get(5).getName());
 
         label6.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label6.setText("24,99$");
+        label6.setText(items.get(5).getPrice()+"$");
 
         jButton11.setBackground(new java.awt.Color(229, 135, 181));
         jButton11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -555,15 +615,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/7.jpg"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(6).getImg()))); // NOI18N
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel18.setText("French Corn & Salad");
+        jLabel18.setText(items.get(6).getName()+"$");
 
         label7.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label7.setText("24,99$");
+        label7.setText(items.get(6).getPrice()+"$");
 
         jButton13.setBackground(new java.awt.Color(229, 135, 181));
         jButton13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -617,15 +677,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/8.jpg"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(7).getImg()))); // NOI18N
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel20.setText("Greek Pasta Salad");
+        jLabel20.setText(items.get(7).getName());
 
         label8.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label8.setText("24,99$");
+        label8.setText(items.get(7).getPrice()+"$");
 
         jButton15.setBackground(new java.awt.Color(229, 135, 181));
         jButton15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -677,15 +737,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/9.jpg"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(8).getImg()))); // NOI18N
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel22.setText("Salad with Pine Nuts");
+        jLabel22.setText(items.get(8).getName());
 
         label9.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label9.setText("24,99$");
+        label9.setText(items.get(8).getPrice()+"$");
 
         jButton17.setBackground(new java.awt.Color(229, 135, 181));
         jButton17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -737,15 +797,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/10.jpg"))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(9).getImg()))); // NOI18N
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel26.setText("Steak Diane");
+        jLabel26.setText(items.get(9).getName());
 
         label10.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label10.setText("24,99$");
+        label10.setText(items.get(9).getPrice()+"$");
 
         jButton19.setBackground(new java.awt.Color(229, 135, 181));
         jButton19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -797,15 +857,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/11.jpg"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(10).getImg()))); // NOI18N
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel28.setText("Chicken Dijon");
+        jLabel28.setText(items.get(10).getName());
 
         label11.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label11.setText("24,99$");
+        label11.setText(items.get(10).getPrice()+"$");
 
         jButton21.setBackground(new java.awt.Color(229, 135, 181));
         jButton21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -858,15 +918,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/12.jpg"))); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(11).getImg()))); // NOI18N
 
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel30.setText("Baskue-Style Fish");
+        jLabel30.setText(items.get(11).getName());
 
         label12.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label12.setText("24,99$");
+        label12.setText(items.get(11).getPrice()+"$");
 
         jButton23.setBackground(new java.awt.Color(229, 135, 181));
         jButton23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -922,15 +982,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/13.jpg"))); // NOI18N
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(12).getImg()))); // NOI18N
 
         jLabel33.setBackground(new java.awt.Color(255, 255, 255));
         jLabel33.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel33.setText("Mocha Dacqouise Cake");
+        jLabel33.setText(items.get(12).getName());
 
         label13.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label13.setText("24,99$");
+        label13.setText(items.get(12).getPrice()+"$");
 
         jButton25.setBackground(new java.awt.Color(229, 135, 181));
         jButton25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -980,15 +1040,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/14.jpg"))); // NOI18N
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(13).getImg()))); // NOI18N
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel35.setText("Macarons");
+        jLabel35.setText(items.get(13).getName());
 
         label14.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label14.setText("24,99$");
+        label14.setText(items.get(13).getPrice()+"$");
 
         jButton27.setBackground(new java.awt.Color(229, 135, 181));
         jButton27.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1042,15 +1102,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/15.jpg"))); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(14).getImg()))); // NOI18N
 
         jLabel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel37.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel37.setText("Butter Tart with Blackberries");
+        jLabel37.setText(items.get(14).getName());
 
         label15.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label15.setText("24,99$");
+        label15.setText(items.get(14).getPrice()+"$");
 
         jButton29.setBackground(new java.awt.Color(229, 135, 181));
         jButton29.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1105,15 +1165,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/16.jpg"))); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(15).getImg()))); // NOI18N
 
         jLabel39.setBackground(new java.awt.Color(255, 255, 255));
         jLabel39.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel39.setText("Arnaud French 75");
+        jLabel39.setText(items.get(15).getName());
 
         label16.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label16.setText("24,99$");
+        label16.setText(items.get(15).getPrice()+"$");
 
         jButton31.setBackground(new java.awt.Color(229, 135, 181));
         jButton31.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1167,16 +1227,16 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/17.jpg"))); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(16).getImg()))); // NOI18N
 
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel41.setText("Antebellum Mint Julep");
+        jLabel41.setText(items.get(16).getName());
         jLabel41.setToolTipText("");
 
         label17.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label17.setText("24,99$");
+        label17.setText(items.get(16).getPrice()+"$");
 
         jButton33.setBackground(new java.awt.Color(229, 135, 181));
         jButton33.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1229,15 +1289,15 @@ public class FrenchKitchenApp extends javax.swing.JFrame {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, null, java.awt.Color.lightGray, java.awt.Color.white));
 
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french/18.jpg"))); // NOI18N
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource(items.get(17).getImg()))); // NOI18N
 
         jLabel43.setBackground(new java.awt.Color(255, 255, 255));
         jLabel43.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(229, 135, 181));
-        jLabel43.setText("The Green Thumb");
+        jLabel43.setText(items.get(17).getName());
 
         label18.setFont(new java.awt.Font("Times New Roman", 2, 22)); // NOI18N
-        label18.setText("24,99$");
+        label18.setText(items.get(17).getPrice()+"$");
 
         jButton35.setBackground(new java.awt.Color(229, 135, 181));
         jButton35.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N

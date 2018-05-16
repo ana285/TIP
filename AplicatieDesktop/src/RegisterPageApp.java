@@ -11,11 +11,38 @@
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.event.MouseEvent;
+import java.net.URI;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 
 import data.Encrypt;
 import data.User;
 public class RegisterPageApp extends javax.swing.JFrame {
+	
+	private static URI getBaseURI() {
+		//TODO change the port to whatever is the server running on
+		return UriBuilder.fromUri("http://localhost:8081/SSW/").build();
+	}
+	
+	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+		    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+		public static boolean validate(String emailStr) {
+		        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+		        return matcher.find();
+		}
+	
     /**
      * Creates new form RegisterPageApp
      */
@@ -627,6 +654,13 @@ public class RegisterPageApp extends javax.swing.JFrame {
 
 		if (!name.equals(null) && !name.equals("") && !name.equals("Fill in with your Name") && !email.equals(null) && !email.equals("") && !email.equals("Fill in with your Email address")
 				&& !telephone.equals(null) && !telephone.equals("") && !telephone.equals("Fill in with your Telephone number") && !address1.equals(null) && !address1.equals("") && !address1.equals("Fill in with your Address")){
+			if(validate(email)==false)
+			{
+				jLabel2.setText("Please enter a valid email address!");
+		        jLabel2.setVisible(true);
+		        return;
+			}
+			
 			User user = new User();
 			user.setEmail(email);
 			user.setName(name);
@@ -642,19 +676,36 @@ public class RegisterPageApp extends javax.swing.JFrame {
 				user.setAddress2(null);
 			}
 			
-			boolean response = servicii.web.AddUserServiceApp.postUser2(user);
-			if(response == true)
-		    {
+			
+			ClientConfig config = new ClientConfig();
+	        //config.register(Custom);
+	        Client client = ClientBuilder.newClient(config);
+	        // Next line of code is a workaround for using PATCH
+	        // A value of true declares that the client will try to set unsupported HTTP method to java.net.HttpURLConnection via reflection.
+	        // PATCH workaround:
+	        //    - alternative to client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+	        //    - also allow PATCH to have a response body
+	        //    - see user1648865 response from https://stackoverflow.com/questions/17897171/how-to-have-a-patch-annotation-for-jax-rs 
+	        client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+			WebTarget service = client.target(getBaseURI());
+			Response response;
+			
+			response = service.path("rest").path("register").request(MediaType.APPLICATION_XML).post(Entity.entity(user, MediaType.APPLICATION_XML), Response.class);
+			System.out.println(response.getStatus());
+			
+			if(response.getStatus() == 201)
+			{
 				jLabel2.setVisible(false);
 				new LoginPageApp().setVisible(true);
 				this.setVisible(false);
-		    }
+			}
 			else
 			{
 				jLabel2.setText("This email already exists!");
 		        jLabel2.setVisible(true);
 
 			}
+			
 		}
 		else
 		{
